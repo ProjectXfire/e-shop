@@ -1,0 +1,25 @@
+.order {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 18px;
+}
+
+.order__products {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (width < 850px) {
+  .order {
+    grid-template-columns: 1fr;
+  }
+}

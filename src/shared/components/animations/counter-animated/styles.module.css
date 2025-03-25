@@ -1,0 +1,141 @@
+.counter-animated {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.counter-animated__action {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-purple-4);
+  border-radius: 5px;
+  color: var(--color-white-1);
+  cursor: pointer;
+}
+
+.animate-action {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid var(--color-purple-4);
+  border-radius: 5px;
+  scale: 1.1;
+  animation: pulse 1s linear infinite;
+}
+
+.animate-action:hover {
+  animation-duration: 300ms;
+}
+
+.counter-animated__action:active .animate-action {
+  border-color: var(--color-blue-2);
+}
+
+@keyframes pulse {
+  0% {
+    scale: 1.1;
+    opacity: 1;
+  }
+  100% {
+    scale: 1.5;
+    opacity: 0;
+  }
+}
+
+/* Animate counter */
+
+.counter-animated__number {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
+
+.block-number {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+}
+
+.block-number--hide {
+  display: none;
+}
+
+.block-animated {
+  position: absolute;
+  display: none;
+  text-align: center;
+}
+
+.block-animated--show {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Animate increase counter */
+
+.roll-up-from-current {
+  animation: move-up-from-current 300ms linear forwards;
+}
+
+.roll-up-from-down {
+  animation: move-up-from-down 300ms linear forwards;
+}
+
+@keyframes move-up-from-current {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes move-up-from-down {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* Animate decrease counter */
+
+.roll-dowm-from-current {
+  animation: move-dowm-from-current 300ms linear forwards;
+}
+
+.roll-dowm-from-up {
+  animation: move-dowm-from-up 300ms linear forwards;
+}
+
+@keyframes move-dowm-from-current {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes move-dowm-from-up {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

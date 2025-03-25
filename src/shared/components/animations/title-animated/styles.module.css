@@ -1,0 +1,49 @@
+.title-animated {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title-animated__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  text-shadow: 0px 0px 1px var(--color-purple-2);
+  animation: animate-title 2s ease-in infinite;
+}
+
+.title-animated__title--animate {
+  animation: animate-title 1s ease-in infinite;
+}
+
+.title-animated__description {
+  color: var(--color-purple-2);
+}
+
+.title-animated__description--animate {
+  animation: animate-subtitle 1s ease-in infinite;
+}
+
+@keyframes animate-title {
+  0% {
+    text-shadow: 0px 0px 1px var(--color-purple-2);
+  }
+  50% {
+    text-shadow: 0px 0px 10px var(--color-purple-2);
+  }
+  100% {
+    text-shadow: 0px 0px 1px var(--color-purple-2);
+  }
+}
+
+@keyframes animate-subtitle {
+  0% {
+    color: var(--color-purple-4);
+  }
+  50% {
+    color: var(--color-purple-2);
+  }
+  100% {
+    color: var(--color-purple-4);
+  }
+}

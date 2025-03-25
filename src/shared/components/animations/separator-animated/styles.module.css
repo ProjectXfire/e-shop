@@ -1,0 +1,50 @@
+.separator {
+  width: 100%;
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+}
+
+.separator__line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: var(--color-purple-4);
+  animation: animate-separator 1.2s linear infinite;
+}
+
+.separator__neon {
+  width: 10%;
+  height: 1px;
+  top: 0;
+  position: absolute;
+  background-color: var(--color-blue-3);
+  z-index: 1;
+  animation: animate-neon 1.2s linear infinite;
+}
+
+@keyframes animate-separator {
+  0% {
+    background: var(--color-purple-4);
+  }
+  50% {
+    background: var(--color-purple-5);
+  }
+  100% {
+    background: var(--color-purple-4);
+  }
+}
+
+@keyframes animate-neon {
+  0% {
+    left: -10%;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    left: 100%;
+    opacity: 1;
+  }
+}

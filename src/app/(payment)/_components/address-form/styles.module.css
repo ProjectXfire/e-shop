@@ -1,0 +1,29 @@
+.address-form {
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form__block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form__actions {
+  margin-top: 20px;
+}
+
+.action {
+  width: 200px;
+}
+
+@media (width < 500px) {
+  .form__block {
+    grid-template-columns: 1fr;
+  }
+}

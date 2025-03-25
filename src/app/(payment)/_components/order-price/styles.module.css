@@ -1,0 +1,30 @@
+.order-price {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px var(--color-purple-4);
+}
+
+.order-price__address {
+  font-size: 0.9rem;
+}
+
+.order-price__summary {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.order-price__total {
+  align-self: flex-end;
+  display: flex;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.order-price__total p:nth-of-type(2) {
+  color: var(--color-blue-3);
+}

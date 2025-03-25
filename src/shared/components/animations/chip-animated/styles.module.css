@@ -1,0 +1,83 @@
+.chip-animated {
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 5px;
+  border: 3px dotted var(--color-white-1);
+  overflow: hidden;
+}
+
+.info {
+  border-color: var(--color-purple-4);
+  background: var(--color-purple-6);
+}
+
+.error {
+  border-color: var(--color-red-2);
+  background: var(--color-red-3);
+  color: var(--color-red-1);
+}
+
+.success {
+  border-color: var(--color-green-2);
+  background: var(--color-green-3);
+  color: var(--color-green-1);
+}
+
+.animate-blocks {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  animation: moving-block 5s linear infinite;
+}
+
+.animate-block-secondary {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  position: absolute;
+  top: 0px;
+  left: -100%;
+  animation: moving-block-2 5s linear infinite;
+}
+
+.animate-block {
+  min-width: 50%;
+  height: 100%;
+  padding: 0px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: skew(-20deg);
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: var(--color-black-2);
+}
+
+.info-block {
+  background: var(--color-blue-4);
+}
+
+@keyframes moving-block {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes moving-block-2 {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}

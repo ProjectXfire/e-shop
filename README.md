@@ -2,6 +2,26 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Run prisma config
+
+only if prisma folder does not exist
+
+```bash
+npx prisma init
+```
+
+To create prisma types for modules
+
+```bash
+npx prisma generate
+```
+
+To create database
+
+```bash
+npx prisma db push
+```
+
 First, run the development server:
 
 ```bash

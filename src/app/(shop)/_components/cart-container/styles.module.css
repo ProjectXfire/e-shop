@@ -1,0 +1,19 @@
+.cart-container {
+  padding-top: 20px;
+}
+
+.card-header {
+  margin-bottom: 40px;
+}
+
+.cart-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (width < 850px) {
+  .cart-content {
+    grid-template-columns: 1fr;
+  }
+}

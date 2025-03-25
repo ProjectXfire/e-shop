@@ -1,0 +1,44 @@
+.orders-list {
+  margin-top: 30px;
+  width: 100%;
+  min-width: 600px;
+  overflow: auto;
+}
+
+.table-header {
+  background-color: var(--color-purple-5);
+}
+
+.table-head {
+  padding: 8px 5px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.table-body tr:nth-child(odd) {
+  background: var(--color-purple-3);
+}
+
+.table-data {
+  padding: 8px 5px;
+  font-size: 0.9rem;
+}
+
+.table-data__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-data__status--error {
+  color: var(--color-red-2);
+}
+
+.table-data__status--success {
+  color: var(--color-green-3);
+}
+
+.table-data__link {
+  color: var(--color-purple-5);
+}

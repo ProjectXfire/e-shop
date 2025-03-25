@@ -1,0 +1,10 @@
+.register-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.register-form__separator {
+  padding: 10px 0px;
+}

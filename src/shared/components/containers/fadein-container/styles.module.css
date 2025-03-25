@@ -1,0 +1,14 @@
+.fadein-container {
+  width: 100%;
+  opacity: 0;
+  animation: fadein-container 500ms ease-in-out forwards;
+}
+
+@keyframes fadein-container {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

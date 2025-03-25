@@ -1,0 +1,17 @@
+.cursor {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: -50px;
+  top: -50px;
+  background-color: var(--color-blue-1);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0.2);
+  transition: transform 200ms linear;
+  text-align: center;
+}

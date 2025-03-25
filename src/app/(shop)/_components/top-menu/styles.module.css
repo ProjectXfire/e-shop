@@ -1,0 +1,36 @@
+/* TOP MENU */
+
+.navbar-container {
+  padding: 15px;
+  box-shadow: 1px -3px 10px var(--color-purple-1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* TOP MENU LINKS */
+
+.categories-links {
+  display: flex;
+  gap: 8px;
+}
+
+@media (width < 768px) {
+  .categories-links {
+    display: none;
+  }
+}

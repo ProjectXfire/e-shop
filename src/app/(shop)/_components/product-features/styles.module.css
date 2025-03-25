@@ -1,0 +1,35 @@
+.product-feature {
+  width: 100%;
+  padding: 10px 15px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.product-feature__sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.product-feature__qtty {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-feature__description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-feature__description p:nth-of-type(2) {
+  font-size: 0.8rem;
+}
+
+.product-subtitle {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
