@@ -34,14 +34,14 @@ function ProductItem({ product }: Props): React.ReactElement {
         className={`${styles["product-item__image"]} ${
           displayImage && styles["product-item__image--animate"]
         }`}
-        src={`/products/${primaryImage}`}
+        src={primaryImage}
         alt={product.title}
         width={500}
         height={500}
       />
       <NextImage
         className={styles["product-item__secondary-image"]}
-        src={`/products/${secondaryImage}`}
+        src={secondaryImage}
         alt={product.title}
         width={500}
         height={500}

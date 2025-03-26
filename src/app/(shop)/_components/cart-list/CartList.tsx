@@ -1,6 +1,6 @@
 "use client";
 
-import { cart } from "@/shared/assets/seed";
+import { cart } from "../../../../../data/seed";
 import styles from "./styles.module.css";
 import CartItem from "./CartItem";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";

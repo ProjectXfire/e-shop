@@ -1,6 +1,6 @@
 "use client";
 
-import { cart } from "@/shared/assets/seed";
+import { cart } from "../../../../../data/seed";
 import CartContainer from "../cart-container/CartContainer";
 import CartList from "../cart-list/CartList";
 import CartSummary from "../cart-summary/CartSummary";

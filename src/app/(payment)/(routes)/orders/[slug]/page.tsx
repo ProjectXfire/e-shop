@@ -1,4 +1,4 @@
-import { cart } from "@/shared/assets/seed";
+import { cart } from "../../../../../../data/seed";
 import Order from "@/app/(payment)/_components/order/Order";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";

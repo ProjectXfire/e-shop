@@ -10,16 +10,11 @@ only if prisma folder does not exist
 npx prisma init
 ```
 
-To create prisma types for modules
+To create migrations and types (after --name you can use any name)
 
 ```bash
-npx prisma generate
-```
+npx prisma migrate dev --name init
 
-To create database
-
-```bash
-npx prisma db push
 ```
 
 First, run the development server:
