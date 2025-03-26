@@ -3,7 +3,7 @@
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
-import { cart } from "@/shared/assets/seed";
+import { cart } from "../../../../../data/seed";
 import styles from "./styles.module.css";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";

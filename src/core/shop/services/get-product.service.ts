@@ -1,5 +1,5 @@
 import type { Product } from "../models/product";
-import { initialData } from "@/shared/assets/seed";
+import { initialData } from "../../../../data/seed";
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const product = initialData.products.find((prod) => prod.slug === slug);
