@@ -1,10 +1,10 @@
 "use client";
 
 import type { Product } from "@/core/shop/models/product";
+import { useState } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import styles from "./styles.module.css";
-import { useState } from "react";
 
 interface Props {
   product: Product;

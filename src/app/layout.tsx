@@ -3,8 +3,8 @@ import "./globals.css";
 import { errorFont, primaryFont } from "@/shared/assets/fonts";
 
 export const metadata: Metadata = {
-  title: "Teslo | Shop",
-  description: "Teslo App",
+  title: { template: "%s E-Shop", default: "E-Shop" },
+  description: "E-Shop App",
 };
 
 export default function RootLayout({

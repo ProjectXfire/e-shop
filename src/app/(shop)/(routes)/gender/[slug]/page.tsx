@@ -9,8 +9,6 @@ import PaddingContainer from "@/shared/components/containers/padding-container/P
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 import Message from "@/shared/components/message/Message";
 
-export const revalidate = 60;
-
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 type Params = Promise<{ slug: string }>;
 
@@ -18,6 +16,8 @@ interface Props {
   params: Params;
   searchParams: SearchParams;
 }
+
+export const revalidate = 3600;
 
 const title: Record<string, string> = { men: "Hombres", women: "Mujeres", kids: "Niños" };
 

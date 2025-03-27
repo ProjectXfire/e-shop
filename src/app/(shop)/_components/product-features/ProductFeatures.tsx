@@ -41,8 +41,7 @@ function ProductFeatures({ product }: Props): React.ReactElement {
   const handleAddToCart = (): void => {};
 
   return (
-    <section className={styles["product-feature"]}>
-      <TitleAnimated title={product.title} subtitle={`$${product.price.toString()}`} />
+    <>
       <div className={styles["product-feature__sizes"]}>
         <p className={styles["product-subtitle"]}>Tamaño</p>
         <SelectSizesAnimated
@@ -62,7 +61,7 @@ function ProductFeatures({ product }: Props): React.ReactElement {
       <ButtonAnimated subBlockColor="var(--color-purple-4)" onClick={handleAddToCart}>
         Añadir al carrito
       </ButtonAnimated>
-    </section>
+    </>
   );
 }
 export default ProductFeatures;
