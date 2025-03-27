@@ -1,10 +1,10 @@
 .swiper-slide {
   display: flex;
-  border: 1px solid var(--color-purple-1);
+  border: 1px solid var(--color-purple-4);
   border-bottom-width: 5px;
   border-right-width: 5px;
   border-radius: 10px;
-  border-right-color: var(--color-purple-4);
+  border-right-color: var(--color-purple-2);
   overflow: hidden;
 }
 
@@ -51,7 +51,7 @@
   object-fit: cover;
 }
 
-@media (width < 850px) {
+@media (width < 800px) {
   .swiper-slide {
     border-bottom-width: 0px;
     border-right-width: 0px;

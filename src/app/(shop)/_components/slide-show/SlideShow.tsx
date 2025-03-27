@@ -31,7 +31,7 @@ function SlideShow({ images }: Props): React.ReactElement {
       >
         {images.map((img, i) => (
           <SwiperSlide key={i}>
-            <NextImage src={`/products/${img}`} alt="image" width={600} height={500} />
+            <NextImage src={img} alt="image" width={600} height={500} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -46,7 +46,7 @@ function SlideShow({ images }: Props): React.ReactElement {
       >
         {images.map((img, i) => (
           <SwiperSlide key={i}>
-            <NextImage src={`/products/${img}`} alt="image" width={600} height={500} />
+            <NextImage src={img} alt="image" width={600} height={500} />
           </SwiperSlide>
         ))}
       </Swiper>

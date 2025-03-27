@@ -1,13 +1,22 @@
 "use client";
 
 import { Formik, Form } from "formik";
-import { addressSchema } from "@/core/payment/schemas/address.schema";
+import { addressSchema } from "@/core/shop/schemas/address.schema";
 import styles from "./styles.module.css";
 import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 
 function AddressForm(): React.ReactElement {
-  const onSubmit = (values: any): void => {
+  const onSubmit = (values: {
+    firstName: string;
+    lastName: string;
+    address: string;
+    secondAddress: string;
+    postalCode: string;
+    city: string;
+    country: string;
+    phone: string;
+  }): void => {
     console.log(values);
   };
 

@@ -1,4 +1,3 @@
-import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 import AuthContainer from "../_components/auth-container/AuthContainer";
 
 interface Props {

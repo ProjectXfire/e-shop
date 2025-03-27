@@ -3,8 +3,8 @@ import styles from "./styles.module.css";
 import { IoSearchOutline } from "react-icons/io5";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import LinkAnimated from "@/shared/components/animations/link-animated/LinkAnimated";
-import CartCounter from "@/app/(shop)/_components/cart-counter/CartCounter";
-import MenuButton from "@/app/(shop)/_components/menu-button/MenuButton";
+import CartCounter from "../cart-counter/CartCounter";
+import MenuButton from "../menu-button/MenuButton";
 import TopMenuLinks from "./TopMenuLinks";
 
 function TopMenu(): React.ReactElement {

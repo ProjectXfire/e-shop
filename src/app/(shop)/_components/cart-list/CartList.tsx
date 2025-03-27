@@ -1,12 +1,13 @@
 "use client";
 
+import type { Cart } from "@/core/shop/models/cart";
 import { cart } from "../../../../../data/seed";
 import styles from "./styles.module.css";
 import CartItem from "./CartItem";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
 
 interface Props {
-  items: any[];
+  items: Cart[];
 }
 
 function CartList({ items }: Props): React.ReactElement {

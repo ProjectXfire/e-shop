@@ -12,7 +12,7 @@ interface Props {
   type?: HTMLInputTypeAttribute;
   errorMessage?: string;
   disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<any>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function InputAnimated({

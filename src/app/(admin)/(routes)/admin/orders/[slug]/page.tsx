@@ -1,12 +1,4 @@
-type Params = Promise<{ slug: string }>;
-
-interface Props {
-  params: Params;
-}
-
-async function OrderPage({ params }: Props): Promise<React.ReactElement> {
-  const { slug } = await params;
-
+async function OrderPage(): Promise<React.ReactElement> {
   return <div>OrderPage</div>;
 }
 export default OrderPage;

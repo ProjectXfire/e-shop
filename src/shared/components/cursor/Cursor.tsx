@@ -10,7 +10,7 @@ function Cursor(): React.ReactElement {
   const isOver = useCursor((s) => s.isOver);
   const text = useCursor((s) => s.text);
 
-  const handleCursor = (e: any): void => {
+  const handleCursor = (e: MouseEvent): void => {
     if (!cursorRef.current) return;
     if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     animationFrameId.current = requestAnimationFrame(() => {

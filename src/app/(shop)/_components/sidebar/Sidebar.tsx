@@ -10,7 +10,6 @@ import {
   IoTicketOutline,
   IoLogInOutline,
   IoLogOutOutline,
-  IoShirtOutline,
 } from "react-icons/io5";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";

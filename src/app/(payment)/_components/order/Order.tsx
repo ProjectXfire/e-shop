@@ -1,3 +1,4 @@
+import type { Cart } from "@/core/shop/models/cart";
 import { IoCardOutline } from "react-icons/io5";
 import styles from "./styles.module.css";
 import OrderProducts from "../order-products/OrderProducts";
@@ -7,7 +8,7 @@ import ChipAnimated from "@/shared/components/animations/chip-animated/ChipAnima
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 
 interface Props {
-  order: any[];
+  order: Cart[];
 }
 
 function Order({ order }: Props): React.ReactElement {

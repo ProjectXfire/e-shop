@@ -1,5 +1,6 @@
 "use client";
 
+import type { Cart } from "@/core/shop/models/cart";
 import NextImage from "next/image";
 import styles from "./styles.module.css";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
@@ -7,7 +8,7 @@ import CounterAnimated from "@/shared/components/animations/counter-animated/Cou
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 
 interface Props {
-  cart: any;
+  cart: Cart;
   hasUnderline?: boolean;
 }
 

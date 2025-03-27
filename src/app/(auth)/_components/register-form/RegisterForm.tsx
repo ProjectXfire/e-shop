@@ -11,7 +11,12 @@ import SeparatorAnimated from "@/shared/components/animations/separator-animated
 import LinkAnimated from "@/shared/components/animations/link-animated/LinkAnimated";
 
 function RegisterForm(): React.ReactElement {
-  const handleSubmit = (values: any): void => {
+  const handleSubmit = (values: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  }): void => {
     console.log(values);
   };
 

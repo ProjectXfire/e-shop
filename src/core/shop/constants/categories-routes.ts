@@ -1,5 +1,5 @@
 export const categoriesRoutes = [
-  { name: "Hombres", path: "/category/men" },
-  { name: "Mujeres", path: "/category/women" },
-  { name: "Niños", path: "/category/kids" },
+  { name: "Hombres", path: "/gender/men" },
+  { name: "Mujeres", path: "/gender/women" },
+  { name: "Niños", path: "/gender/kids" },
 ];

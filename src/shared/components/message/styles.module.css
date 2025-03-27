@@ -1,0 +1,10 @@
+.error-message {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.error-message__message {
+  width: 100%;
+  max-width: 500px;
+}
