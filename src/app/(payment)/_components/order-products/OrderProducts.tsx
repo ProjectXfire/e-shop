@@ -1,8 +1,9 @@
+import type { Cart } from "@/core/shop/models/cart";
 import NextImage from "next/image";
 import styles from "./styles.module.css";
 
 interface Props {
-  products: any[];
+  products: Cart[];
 }
 
 function OrderProducts({ products }: Props): React.ReactElement {

@@ -1,27 +1,53 @@
+import type { Product, GenderType } from "../models/product";
 import { productMapper } from "../mappers/product.mapper";
-import type { Product } from "../models/product";
 import { prisma } from "@/shared/config/prisma";
 
-export async function getProducts(): Promise<Product[]> {
+interface ReturnProducts {
+  products: Product[];
+  pages: number;
+}
+
+interface PaginationOptions {
+  page?: number;
+  take?: number;
+}
+
+export async function getProducts({
+  page = 1,
+  take = 12,
+}: PaginationOptions): Promise<ReturnProducts> {
   try {
+    if (page < 1) page = 1;
     const data = await prisma.product.findMany({
       include: { images: { take: 2, select: { url: true } } },
+      skip: (page - 1) * take,
+      take,
     });
+    const totalProducts = await prisma.product.count();
     const products = data.map((item) => productMapper(item));
-    return products;
+    return { pages: Math.ceil(totalProducts / take), products };
   } catch (error) {
-    return [];
+    return { pages: 0, products: [] };
   }
 }
 
-export async function getProductsByCategory(category: string): Promise<Product[]> {
+export async function getProductsByCategory(
+  genderSlug: string,
+  { page = 1, take = 12 }: PaginationOptions
+): Promise<ReturnProducts> {
   try {
+    if (page < 1) page = 1;
+    const gender = genderSlug as GenderType;
     const data = await prisma.product.findMany({
       include: { images: { take: 2, select: { url: true } } },
+      where: { gender },
+      skip: (page - 1) * take,
+      take,
     });
+    const totalProducts = await prisma.product.count({ where: { gender } });
     const products = data.map((item) => productMapper(item));
-    return products;
+    return { products, pages: Math.ceil(totalProducts / take) };
   } catch (error) {
-    return [];
+    return { pages: 0, products: [] };
   }
 }

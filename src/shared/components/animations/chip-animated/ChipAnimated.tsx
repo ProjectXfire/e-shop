@@ -9,9 +9,13 @@ interface Props {
 function ChipAnimated({ text, icon, variant = "info" }: Props): React.ReactElement {
   return (
     <div className={`${styles["chip-animated"]} ${styles[variant]}`}>
-      <div style={{ visibility: "hidden", display: "flex" }}>
+      <div className={styles["animate-block"]} style={{ visibility: "hidden", display: "flex" }}>
         {icon && icon}
-        <s>{text}</s>
+        <p>{text}</p>
+      </div>
+      <div className={styles["animate-block"]} style={{ visibility: "hidden", display: "flex" }}>
+        {icon && icon}
+        <p>{text}</p>
       </div>
       <div className={styles["animate-blocks"]}>
         <div className={`${styles["animate-block"]} ${styles[variant + "-block"]}`}>

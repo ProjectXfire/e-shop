@@ -19,7 +19,7 @@ type Features = {
 };
 
 function ProductFeatures({ product }: Props): React.ReactElement {
-  const [featuresSelected, setFeaturesSelected] = useState<Features>({
+  const [, setFeaturesSelected] = useState<Features>({
     color: "",
     size: product.sizes[0],
     quantity: 1,

@@ -80,7 +80,7 @@ function OrderSummary(): React.ReactElement {
         <p className={`${styles["info__value"]} ${styles["info__value--variant"]}`}>$0</p>
       </div>
       <div className={styles.terms}>
-        Al hacer click en "crear orden", aceptas nuestros{" "}
+        Al hacer click en &quot;crear orden&quot;, aceptas nuestros{" "}
         <NextLink className={styles.terms__link} href="/">
           términos y condiciones
         </NextLink>{" "}

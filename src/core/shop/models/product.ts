@@ -12,6 +12,6 @@ export interface Product {
   gender: GenderType;
 }
 
-type GenderType = "men" | "women" | "kids" | "unisex";
+export type GenderType = "men" | "women" | "kids" | "unisex";
 export type ValidSize = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
 export type ValidType = "shirts" | "pants" | "hoodies" | "hats";

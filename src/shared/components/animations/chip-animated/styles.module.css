@@ -1,6 +1,7 @@
 .chip-animated {
   width: 100%;
-  padding: 10px;
+  min-height: 50px;
+  padding: 5px;
   position: relative;
   display: flex;
   align-items: center;
@@ -8,6 +9,7 @@
   border-radius: 5px;
   border: 3px dotted var(--color-white-1);
   overflow: hidden;
+  font-size: 0.9rem;
 }
 
 .info {

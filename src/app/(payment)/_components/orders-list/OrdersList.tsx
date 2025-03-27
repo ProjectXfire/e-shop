@@ -1,10 +1,9 @@
-import NextLink from "next/link";
 import { IoCardOutline } from "react-icons/io5";
 import styles from "./styles.module.css";
 import LinkAnimated from "@/shared/components/animations/link-animated/LinkAnimated";
 
 interface Props {
-  orders: any[];
+  orders: { id: string; name: string; status: string }[];
 }
 
 function OrdersList({ orders }: Props): React.ReactNode {
