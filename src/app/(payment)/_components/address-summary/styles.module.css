@@ -3,3 +3,17 @@
   flex-direction: column;
   gap: 20px;
 }
+
+/* SKELETON */
+
+.address-summary-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.address-summary-skeleton__table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}

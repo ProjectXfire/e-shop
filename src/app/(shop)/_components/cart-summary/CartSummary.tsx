@@ -4,12 +4,15 @@ import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
+import { useCart } from "@/core/shop/store/useCart";
+import { currencyFormat } from "@/shared/utils/currency-format";
 
 interface Props {
-  itemsTotalPrice: number;
+  totalPrice: number;
+  totalItems: number;
 }
 
-function CartSummary({ itemsTotalPrice }: Props): React.ReactElement {
+function CartSummary({ totalPrice, totalItems }: Props): React.ReactElement {
   const router = useRouter();
 
   const navigateToCheckout = (): void => {
@@ -18,20 +21,16 @@ function CartSummary({ itemsTotalPrice }: Props): React.ReactElement {
 
   return (
     <section className={styles["cart-summary"]}>
-      <TitleAnimated title="Resumen de Orden" />
+      <TitleAnimated title="Resumen" />
       <div className={styles["cart-summary__block"]}>
-        <p className={styles["block-key"]}>Envío</p>
-        <p>Free</p>
+        <p className={styles["block-key"]}>Total de Artículos</p>
+        <p>{totalItems}</p>
       </div>
       <div className={styles["cart-summary__block"]}>
-        <p className={styles["block-key"]}>Impuesto</p>
-        <p>Para ser calculado</p>
+        <p className={styles["block-key"]}>Total</p>
+        <p>{currencyFormat(totalPrice)}</p>
       </div>
-      <div className={styles["cart-summary__block"]}>
-        <p className={styles["block-key"]}>Subtotal</p>
-        <p>${itemsTotalPrice}</p>
-      </div>
-      <ButtonAnimated subBlockColor="var(--color-purple-4)" onClick={navigateToCheckout}>
+      <ButtonAnimated subBlockColor="var(--color-purple-5)" onClick={navigateToCheckout}>
         Verificar
       </ButtonAnimated>
     </section>

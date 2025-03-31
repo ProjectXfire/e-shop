@@ -1,10 +1,12 @@
 import { redirect } from "next/navigation";
-import { getProductBySlug } from "@/core/shop/services/get-product.service";
+import { getProductBySlugCache } from "@/core/shop/services/get-product.service";
 import ProductContainer from "@/app/(shop)/_components/product-container/ProductContainer";
 import ProductFeatures from "@/app/(shop)/_components/product-features/ProductFeatures";
 import SlideShow from "@/app/(shop)/_components/slide-show/SlideShow";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
+import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
+import ProductStock from "@/app/(shop)/_components/product-features/ProductStock";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -13,7 +15,7 @@ interface Props {
 async function ProductPage({ params }: Props): Promise<React.ReactElement> {
   const { slug } = await params;
 
-  const product = await getProductBySlug(slug);
+  const product = await getProductBySlugCache(slug);
 
   if (!product) redirect("/");
 
@@ -22,7 +24,10 @@ async function ProductPage({ params }: Props): Promise<React.ReactElement> {
       <FadeinContainer>
         <ProductContainer>
           <SlideShow images={product.images} />
-          <ProductFeatures product={product} />
+          <section className="flex flex-col gap-[30px] px-[10px] py-[15px]">
+            <ProductStock productSlug={slug} />
+            <ProductFeatures product={product} />
+          </section>
         </ProductContainer>
       </FadeinContainer>
     </MaxWidthContainer>

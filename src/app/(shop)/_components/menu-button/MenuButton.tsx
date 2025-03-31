@@ -1,8 +1,8 @@
 "use client";
 
-import { useSidebar } from "@/core/shop/store/useSidebar";
 import styles from "./styles.module.css";
 import { IoMenu } from "react-icons/io5";
+import { useSidebar } from "@/core/shop/store/useSidebar";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 
 function MenuButton(): React.ReactElement {

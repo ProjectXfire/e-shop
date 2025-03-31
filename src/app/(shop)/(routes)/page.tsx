@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getProducts } from "@/core/shop/services/get-products.service";
+import { getProductsCache } from "@/core/shop/services/get-products.service";
 import ProductsGrid from "../_components/products-grid/ProductsGrid";
 import ProductsPagination from "../_components/products-grid/ProductsPagination";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
@@ -24,7 +24,7 @@ async function ShopPage({ searchParams }: Props): Promise<React.ReactElement> {
 
   if (page === null || page < 0) redirect("/");
 
-  const { pages, products } = await getProducts({ page, take: 12 });
+  const { pages, products } = await getProductsCache({ page, take: 12 });
 
   if (products.length === 0)
     return (
