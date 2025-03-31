@@ -8,13 +8,13 @@ import PaddingContainer from "@/shared/components/containers/padding-container/P
 import Message from "@/shared/components/message/Message";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 
-export const revalidate = 60;
-
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 interface Props {
   searchParams: SearchParams;
 }
+
+export const revalidate = 3600;
 
 async function ShopPage({ searchParams }: Props): Promise<React.ReactElement> {
   const query = await searchParams;

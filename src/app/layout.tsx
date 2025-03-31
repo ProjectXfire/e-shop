@@ -5,8 +5,8 @@ import { Toaster } from "sonner";
 import ProviderContainer from "@/shared/components/containers/provider-container/ProviderContainer";
 
 export const metadata: Metadata = {
-  title: "Teslo | Shop",
-  description: "Teslo App",
+  title: { template: "%s E-Shop", default: "E-Shop" },
+  description: "E-Shop App",
 };
 
 export default function RootLayout({

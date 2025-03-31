@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getProductBySlugCache } from "@/core/shop/services/get-product.service";
 import ProductContainer from "@/app/(shop)/_components/product-container/ProductContainer";
@@ -10,6 +11,20 @@ import ProductStock from "@/app/(shop)/_components/product-features/ProductStock
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProductBySlugCache(slug);
+  return {
+    title: product?.title,
+    description: product?.description,
+    openGraph: {
+      title: product?.title,
+      description: product?.description,
+      images: product?.images,
+    },
+  };
 }
 
 async function ProductPage({ params }: Props): Promise<React.ReactElement> {
