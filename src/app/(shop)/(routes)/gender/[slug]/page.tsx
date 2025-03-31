@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getProductsByCategory } from "@/core/shop/services/get-products.service";
+import { getProductsByGenderCache } from "@/core/shop/services/get-products.service";
 import { categoriesRoutes } from "@/core/shop/constants/categories-routes";
 import ProductsGrid from "@/app/(shop)/_components/products-grid/ProductsGrid";
 import ProductsPagination from "@/app/(shop)/_components/products-grid/ProductsPagination";
@@ -35,7 +35,7 @@ async function CategoryPage({ params, searchParams }: Props): Promise<React.Reac
 
   if (page === null || page < 0) redirect("/");
 
-  const { pages, products } = await getProductsByCategory(slug, { page, take: 12 });
+  const { pages, products } = await getProductsByGenderCache(slug, { page, take: 12 });
 
   if (products.length === 0)
     return (

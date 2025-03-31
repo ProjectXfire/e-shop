@@ -79,3 +79,11 @@
     font-size: 0.8rem;
   }
 }
+
+/* SKELETON */
+
+.order-summary__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

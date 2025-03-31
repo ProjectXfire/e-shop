@@ -19,28 +19,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   }
 }
 
-export async function getProductBySlugCache(slug: string): Promise<Product | null> {
-  try {
-    const returnCache = unstable_cache(
-      async () => {
-        return await prisma.product.findUnique({
-          where: { slug },
-          include: { images: { select: { url: true } } },
-        });
-      },
-      [`product-${slug}`],
-      { revalidate: 3600, tags: ["products"] }
-    );
-    const data = await returnCache();
-    if (!data) throw new Error("Product not found");
-    const product = productMapper(data);
-    return product;
-  } catch (error) {
-    return null;
-  }
-}
-
-export async function getProductStockBySlug(slug: string): Promise<number> {
+export async function getStockBySlug(slug: string): Promise<number> {
   try {
     const data = await prisma.product.findUnique({
       where: { slug },
@@ -52,3 +31,26 @@ export async function getProductStockBySlug(slug: string): Promise<number> {
     return 0;
   }
 }
+
+export async function getProductBySlugCache(slug: string): Promise<Product | null> {
+  try {
+    const cacheFuntion = unstable_cache(
+      async () => {
+        return await prisma.product.findUnique({
+          where: { slug },
+          include: { images: { select: { url: true } } },
+        });
+      },
+      [`product-${slug}`],
+      { tags: ["products"], revalidate: 3600 }
+    );
+    const data = await cacheFuntion();
+    if (!data) throw new Error("Product not found");
+    const product = productMapper(data);
+    return product;
+  } catch (error) {
+    return null;
+  }
+}
+
+

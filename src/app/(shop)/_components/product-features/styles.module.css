@@ -1,6 +1,5 @@
 .product-feature {
   width: 100%;
-  padding: 10px 15px;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -17,6 +16,21 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.product-feature__stock {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.4rem;
+  color: var(--color-purple-2);
+  font-weight: bold;
+}
+
+.product-feature__stock p:nth-of-type(2) {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-purple-5);
 }
 
 .product-feature__description {

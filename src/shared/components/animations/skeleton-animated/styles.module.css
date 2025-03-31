@@ -1,0 +1,166 @@
+.container {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.skeleton {
+  width: 100%;
+  height: 40px;
+  background-color: var(--color-purple-6);
+  border-radius: 5px;
+  border: 2px solid var(--color-blue-2);
+  animation: skeleton-fadein 2s ease-in-out infinite, skeleton-border 2s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.skeleton__x {
+  width: 20px;
+  height: 2px;
+  position: absolute;
+  background-color: var(--color-purple-2);
+  opacity: 0.5;
+}
+
+.skeleton__y {
+  width: 2px;
+  height: 20px;
+  position: absolute;
+  background-color: var(--color-purple-2);
+  opacity: 0.5;
+}
+
+/* TOP BLOCK */
+
+.skeleton__x--top {
+  top: 0px;
+  left: -100%;
+  border-radius: 50%;
+}
+
+.skeleton__x-top-animate {
+  animation: move-top 2000ms linear forwards;
+}
+
+/* RIGHT BLOCK */
+
+.skeleton__y--right {
+  top: -100%;
+  right: 0px;
+  border-radius: 50%;
+}
+
+.skeleton__y-right-animate {
+  animation: move-right 1000ms linear forwards;
+  animation-delay: 1600ms;
+}
+
+/* BOTTOM BLOCK */
+
+.skeleton__x--bottom {
+  right: -100%;
+  bottom: 0px;
+  border-radius: 50%;
+}
+
+.skeleton__x-bottom-animate {
+  animation: move-bottom 4000ms linear forwards;
+  animation-delay: 700ms;
+}
+
+/* LEFT BLOCK */
+
+.skeleton__y--left {
+  left: 0px;
+  bottom: -100%;
+  border-radius: 50%;
+}
+
+.skeleton__x-left-animate {
+  animation: move-left 1000ms linear forwards;
+  animation-delay: 4400ms;
+}
+
+@keyframes skeleton-border {
+  0%,
+  100% {
+    border: 2px solid var(--color-blue-5);
+  }
+  50% {
+    border: 2px solid var(--color-purple-5);
+  }
+}
+
+@keyframes skeleton-fadein {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes move-top {
+  0% {
+    top: 0px;
+    left: 2px;
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes move-right {
+  0% {
+    top: -100%;
+    right: 0px;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    top: 103%;
+    opacity: 0;
+  }
+}
+
+@keyframes move-bottom {
+  0% {
+    right: -100%;
+    bottom: 0px;
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    right: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes move-left {
+  0% {
+    left: 0px;
+    bottom: -100%;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}

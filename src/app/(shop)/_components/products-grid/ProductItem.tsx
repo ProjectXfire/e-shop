@@ -4,6 +4,7 @@ import type { Product } from "@/core/shop/models/product";
 import { useState } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";
+import { currencyFormat } from "@/shared/utils/currency-format";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -48,7 +49,7 @@ function ProductItem({ product }: Props): React.ReactElement {
       />
       <p className={styles["product-item__title"]}>{product.title}</p>
       <div className={styles["product-item__spacer"]} />
-      <p className={styles["product-item__price"]}>${product.price}</p>
+      <p className={styles["product-item__price"]}>{currencyFormat(product.price)}</p>
     </NextLink>
   );
 }

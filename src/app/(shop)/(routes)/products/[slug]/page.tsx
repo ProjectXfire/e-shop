@@ -7,7 +7,7 @@ import SlideShow from "@/app/(shop)/_components/slide-show/SlideShow";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
-import ProductStock from "@/app/(shop)/_components/product-stock/ProductStock";
+import ProductStock from "@/app/(shop)/_components/product-features/ProductStock";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -39,9 +39,8 @@ async function ProductPage({ params }: Props): Promise<React.ReactElement> {
       <FadeinContainer>
         <ProductContainer>
           <SlideShow images={product.images} />
-          <section className="flex flex-col gap-[30px] px-[15px] py-[10px] pb-[30px]">
-            <TitleAnimated title={product.title} subtitle={`Price: $${product.price.toString()}`} />
-            <ProductStock slug={slug} />
+          <section className="flex flex-col gap-[30px] px-[10px] py-[15px]">
+            <ProductStock productSlug={slug} />
             <ProductFeatures product={product} />
           </section>
         </ProductContainer>
