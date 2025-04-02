@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+import { auth } from "@auth";
 import Sidebar from "@/app/(shop)/_components/sidebar/Sidebar";
 import TopMenu from "@/app/(shop)/_components/top-menu/TopMenu";
 
@@ -5,11 +7,15 @@ interface Props {
   children: React.ReactNode;
 }
 
-function CheckoutLayout({ children }: Props): React.ReactElement {
+async function CheckoutLayout({ children }: Props): Promise<React.ReactElement> {
+  const session = await auth();
+
+  if (!session) redirect("/auth/login?redirect=/checkout/address");
+
   return (
     <main>
-      <TopMenu />
-      <Sidebar />
+      <TopMenu user={session.user} />
+      <Sidebar user={session.user} />
       {children}
     </main>
   );

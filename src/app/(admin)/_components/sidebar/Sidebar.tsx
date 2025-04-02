@@ -1,6 +1,9 @@
 "use client";
 
+import type { User } from "@/core/user/models/user.model";
+import { useRouter } from "next/navigation";
 import { useAdminSidebar } from "@/core/admin/store/useAdminSidebar";
+import { closeSession } from "@/core/auth/services/auth.service";
 import styles from "./styles.module.css";
 import {
   IoCloseOutline,
@@ -15,9 +18,13 @@ import {
 } from "react-icons/io5";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
-import { useRouter } from "next/navigation";
+import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 
-function Sidebar(): React.ReactElement {
+interface Props {
+  user: User;
+}
+
+function Sidebar({ user }: Props): React.ReactElement {
   const router = useRouter();
 
   const isOpen = useAdminSidebar((s) => s.isOpen);
@@ -26,6 +33,17 @@ function Sidebar(): React.ReactElement {
 
   const navigateTo = (path: string): void => {
     router.push(path);
+    close();
+  };
+
+  const handleLogin = (): void => {
+    router.push("/auth/login");
+    close();
+  };
+
+  const handleCloseSession = async (): Promise<void> => {
+    const isClossed = await closeSession();
+    if (isClossed) router.refresh();
     close();
   };
 
@@ -39,6 +57,11 @@ function Sidebar(): React.ReactElement {
                 <IoCloseOutline size={25} />
               </ButtonAnimated>
             </header>
+            {user && (
+              <div className={styles.sidebar__name}>
+                <TitleAnimated title={`${user.firstName} ${user.lastName}`} />
+              </div>
+            )}
             <InputAnimated
               placeholder="Search..."
               icon={<IoSearchOutline size={20} />}
@@ -51,12 +74,15 @@ function Sidebar(): React.ReactElement {
               <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
                 <IoStorefrontOutline size={20} /> Tienda
               </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
-                <IoLogInOutline size={20} /> Ingresar
-              </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
-                <IoLogOutOutline size={20} /> Salir
-              </ButtonAnimated>
+              {user ? (
+                <ButtonAnimated contentStyle={styles.link} onClick={handleCloseSession}>
+                  <IoLogOutOutline size={20} /> Salir
+                </ButtonAnimated>
+              ) : (
+                <ButtonAnimated contentStyle={styles.link} onClick={handleLogin}>
+                  <IoLogInOutline size={20} /> Entrar
+                </ButtonAnimated>
+              )}
             </div>
             <div className={styles.sidebar__separator} />
             <div className={styles.sidebar__links}>
@@ -73,6 +99,7 @@ function Sidebar(): React.ReactElement {
           </aside>
           <div
             className={`${styles["sidebar-blur"]} ${isOpen && styles["sidebar-blur--active"]}`}
+            onClick={close}
           />
         </>
       )}

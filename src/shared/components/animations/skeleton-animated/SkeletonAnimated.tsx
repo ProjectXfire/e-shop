@@ -3,7 +3,11 @@
 import { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 
-function SkeletonAnimated(): React.ReactElement {
+interface Props {
+  height?: number;
+}
+
+function SkeletonAnimated({ height }: Props): React.ReactElement {
   const refTop = useRef<HTMLDivElement | null>(null);
   const refRight = useRef<HTMLDivElement | null>(null);
   const refBottom = useRef<HTMLDivElement | null>(null);
@@ -37,8 +41,8 @@ function SkeletonAnimated(): React.ReactElement {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.skeleton} />
+    <div className={styles.container} style={{ height }}>
+      <div className={styles.skeleton} style={{ height }} />
       <div ref={refTop} className={`${styles.skeleton__x} ${styles["skeleton__x--top"]}`}></div>
       <div ref={refRight} className={`${styles.skeleton__y} ${styles["skeleton__y--right"]}`}></div>
       <div

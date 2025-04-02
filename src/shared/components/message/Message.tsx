@@ -7,7 +7,7 @@ interface Props {
   icon?: React.ReactNode;
 }
 
-function ErrorMessage({ message, variant, icon }: Props): React.ReactElement {
+function Message({ message, variant, icon }: Props): React.ReactElement {
   return (
     <div className={styles["error-message"]}>
       <div className={styles["error-message__message"]}>
@@ -16,4 +16,4 @@ function ErrorMessage({ message, variant, icon }: Props): React.ReactElement {
     </div>
   );
 }
-export default ErrorMessage;
+export default Message;

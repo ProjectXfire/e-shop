@@ -82,7 +82,8 @@ function ProductFeatures({ product }: Props): React.ReactElement {
       <ButtonAnimated subBlockColor="var(--color-purple-4)" onClick={handleAddToCart}>
         Añadir al carrito
       </ButtonAnimated>
-    </>
+    </section>
   );
 }
+
 export default ProductFeatures;

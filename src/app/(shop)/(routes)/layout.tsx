@@ -1,3 +1,4 @@
+import { auth } from "@auth";
 import TopMenu from "../_components/top-menu/TopMenu";
 import Sidebar from "../_components/sidebar/Sidebar";
 import Footer from "@/shared/components/footer/Footer";
@@ -8,11 +9,13 @@ interface Props {
   children: React.ReactNode;
 }
 
-function ShopLayout({ children }: Props): React.ReactElement {
+async function ShopLayout({ children }: Props): Promise<React.ReactElement> {
+  const session = await auth();
+
   return (
     <FlexContainer>
-      <TopMenu />
-      <Sidebar />
+      <TopMenu user={session?.user ?? null} />
+      <Sidebar user={session?.user ?? null} />
       <div>{children}</div>
       <FlexSpacer />
       <Footer />

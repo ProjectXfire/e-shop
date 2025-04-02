@@ -1,0 +1,11 @@
+.address-container {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+}
+
+@media (width < 800px) {
+  .address-container {
+    grid-template-columns: 1fr;
+  }
+}

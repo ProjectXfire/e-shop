@@ -9,9 +9,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+}
+
+.navbar__home {
+  min-width: 70px;
 }
 
 .navbar__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.actions-user {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.actions-menu {
   display: flex;
   align-items: center;
   gap: 10px;
