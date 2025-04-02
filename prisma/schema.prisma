@@ -13,6 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  admin
+  user
+}
+
 enum Size {
   XS
   S
@@ -28,6 +33,17 @@ enum Gender {
   women
   kids
   unisex
+}
+
+model User {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  email String @unique
+  emailVerified DateTime?
+  password String
+  image String?
+  role Role @default(user)
 }
 
 model Category {

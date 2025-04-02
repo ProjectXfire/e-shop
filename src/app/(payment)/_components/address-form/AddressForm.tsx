@@ -1,33 +1,41 @@
 "use client";
 
 import { Formik, Form } from "formik";
+import { useAddress } from "@/core/shop/store/useAddress";
 import { addressSchema } from "@/core/shop/schemas/address.schema";
 import styles from "./styles.module.css";
 import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
+import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
+import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
 
 function AddressForm(): React.ReactElement {
+  const addAddress = useAddress((s) => s.addAddress);
+
   const onSubmit = (values: {
     firstName: string;
     lastName: string;
     address: string;
-    secondAddress: string;
     postalCode: string;
     city: string;
     country: string;
     phone: string;
   }): void => {
-    console.log(values);
+    const { firstName, lastName, address, city, postalCode, country, phone } = values;
+    const id = new Date().getTime().toString();
+    console.log(id);
+    addAddress({ id, firstName, lastName, address, city, postalCode, country, phone });
   };
 
   return (
     <section className={styles["address-form"]}>
+      <TitleAnimated title="Agregar dirección de entrega" />
+      <SeparatorAnimated />
       <Formik
         initialValues={{
           firstName: "",
           lastName: "",
           address: "",
-          secondAddress: "",
           postalCode: "",
           city: "",
           country: "",
@@ -54,11 +62,6 @@ function AddressForm(): React.ReactElement {
               placeholder="Dirección"
               name="address"
               errorMessage={errors.address && touched.address ? errors.address : ""}
-              onChange={handleChange}
-            />
-            <InputAnimated
-              placeholder="Dirección adicional"
-              name="secondAddress"
               onChange={handleChange}
             />
             <div className={styles.form__block}>
@@ -90,7 +93,7 @@ function AddressForm(): React.ReactElement {
                 type="submit"
                 subBlockColor="var(--color-purple-4)"
               >
-                Siguiente
+                Agregar
               </ButtonAnimated>
             </div>
           </Form>

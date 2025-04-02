@@ -31,6 +31,10 @@
   overflow: auto;
 }
 
+.sidebar__name {
+  margin-bottom: 18px;
+}
+
 .sidebar-blur--active {
   transform: translateX(0%);
   opacity: 1;

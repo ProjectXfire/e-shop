@@ -1,0 +1,38 @@
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.address-list__message {
+  padding: 30px 18px;
+  border: 2px dotted var(--color-purple-4);
+  border-radius: 5px;
+}
+
+.address-list__selection {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--color-purple-4);
+  border-radius: 5px;
+}
+
+.selection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.selection-item__remove {
+  width: 35px;
+  height: 35px;
+}
+
+.address-list-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

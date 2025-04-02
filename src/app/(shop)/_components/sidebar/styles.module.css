@@ -17,6 +17,7 @@
 }
 
 .sidebar {
+  width: 100%;
   max-width: 400px;
   height: 100dvh;
   padding: 10px 16px;
@@ -24,11 +25,16 @@
   top: 0;
   right: 0;
   z-index: 4;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-purple-5);
   transform: translateX(100%);
   transition: transform 300ms ease-in-out;
   overflow: auto;
+}
+
+.sidebar__name {
+  margin-bottom: 18px;
 }
 
 .sidebar-blur--active {
