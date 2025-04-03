@@ -44,6 +44,7 @@ model User {
   password String
   image String?
   role Role @default(user)
+  address Address[]
 }
 
 model Category {
@@ -69,6 +70,20 @@ model Product {
   category Category @relation(fields: [categoryId], references: [id])
   @@index([gender])
 }
+
+model Address {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  address String
+  postalCode String
+  city String
+  country String
+  phone String
+  userId String
+  user User @relation(fields: [userId], references: [id])
+}
+
 
 model ProductImage {
   id String @id @default(uuid())

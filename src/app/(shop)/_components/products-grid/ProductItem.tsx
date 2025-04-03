@@ -1,6 +1,6 @@
 "use client";
 
-import type { Product } from "@/core/shop/models/product";
+import type { Product } from "@/core/shop/models/product.model";
 import { useState } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";

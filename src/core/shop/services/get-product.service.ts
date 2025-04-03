@@ -1,6 +1,6 @@
 "use server";
 
-import type { Product } from "../models/product";
+import type { Product } from "../models/product.model";
 import { unstable_cache } from "next/cache";
 import { prisma } from "@/shared/config/prisma";
 import { productMapper } from "../mappers/product.mapper";
@@ -52,5 +52,3 @@ export async function getProductBySlugCache(slug: string): Promise<Product | nul
     return null;
   }
 }
-
-

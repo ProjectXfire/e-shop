@@ -1,3 +1,5 @@
+import { auth } from "@auth";
+import { getAddressLissByUser } from "@/core/shop/services/get-address-list.service";
 import AddressContainer from "@/app/(payment)/_components/address-container/AddressContainer";
 import AddressForm from "@/app/(payment)/_components/address-form/AddressForm";
 import AddressHeader from "@/app/(payment)/_components/address-header/AddressHeader";
@@ -6,15 +8,18 @@ import FadeinContainer from "@/shared/components/containers/fadein-container/Fad
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import PaddingContainer from "@/shared/components/containers/padding-container/PaddingContainer";
 
-function AddressPage(): React.ReactElement {
+async function AddressPage(): Promise<React.ReactElement> {
+  const session = await auth();
+  const { data } = await getAddressLissByUser(session?.user.id);
+
   return (
     <MaxWidthContainer>
       <PaddingContainer>
         <AddressHeader />
         <FadeinContainer>
           <AddressContainer>
-            <AddressForm />
-            <AddressList />
+            <AddressForm userId={session?.user.id} />
+            <AddressList addressList={data} userId={session?.user.id} />
           </AddressContainer>
         </FadeinContainer>
       </PaddingContainer>

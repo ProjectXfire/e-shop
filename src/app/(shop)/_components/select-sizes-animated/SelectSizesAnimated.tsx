@@ -1,6 +1,6 @@
 "use client";
 
-import type { ValidSize } from "@/core/shop/models/product";
+import type { ValidSize } from "@/core/shop/models/product.model";
 import { useState } from "react";
 import styles from "./styles.module.css";
 

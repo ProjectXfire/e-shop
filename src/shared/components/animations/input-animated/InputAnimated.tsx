@@ -7,7 +7,6 @@ interface Props {
   icon?: React.ReactNode;
   placeholder?: string;
   defaultValue?: string;
-  value?: string;
   name?: string;
   type?: HTMLInputTypeAttribute;
   errorMessage?: string;
