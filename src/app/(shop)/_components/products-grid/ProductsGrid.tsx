@@ -1,4 +1,4 @@
-import type { Product } from "@/core/shop/models/product";
+import type { Product } from "@/core/shop/models/product.model";
 import styles from "./styles.module.css";
 import ProductItem from "./ProductItem";
 

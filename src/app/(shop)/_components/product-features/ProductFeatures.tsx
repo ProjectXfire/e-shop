@@ -1,7 +1,7 @@
 "use client";
 
 import type { CartDto } from "@/core/shop/dtos/cart.dto";
-import type { Product, ValidSize } from "@/core/shop/models/product";
+import type { Product, ValidSize } from "@/core/shop/models/product.model";
 import { useState } from "react";
 import { useCart } from "@/core/shop/store/useCart";
 import { currencyFormat } from "@/shared/utils/currency-format";

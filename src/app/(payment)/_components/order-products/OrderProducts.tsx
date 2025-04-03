@@ -1,4 +1,4 @@
-import type { Cart } from "@/core/shop/models/cart";
+import type { Cart } from "@/core/shop/models/cart.model";
 import NextImage from "next/image";
 import styles from "./styles.module.css";
 

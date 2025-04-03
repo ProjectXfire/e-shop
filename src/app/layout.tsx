@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { errorFont, primaryFont } from "@/shared/assets/fonts";
-import { Toaster } from "sonner";
 import ProviderContainer from "@/shared/components/containers/provider-container/ProviderContainer";
 
 export const metadata: Metadata = {

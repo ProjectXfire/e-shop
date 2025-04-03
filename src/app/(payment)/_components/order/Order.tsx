@@ -1,4 +1,4 @@
-import type { Cart } from "@/core/shop/models/cart";
+import type { Cart } from "@/core/shop/models/cart.model";
 import { IoCardOutline } from "react-icons/io5";
 import styles from "./styles.module.css";
 import OrderProducts from "../order-products/OrderProducts";

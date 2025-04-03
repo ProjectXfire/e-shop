@@ -1,4 +1,4 @@
-import type { GenderType, ValidSize, ValidType } from "../models/product";
+import type { GenderType, ValidSize, ValidType } from "../models/product.model";
 
 export interface CartDto {
   id: string;

@@ -1,4 +1,4 @@
-import type { Product } from "../models/product";
+import type { Product } from "../models/product.model";
 
 export function productMapper(data: Record<string, any>): Product {
   const { id, title, description, inStock, price, sizes, slug, tags, gender, images, category } =

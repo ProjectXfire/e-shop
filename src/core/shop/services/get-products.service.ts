@@ -1,4 +1,4 @@
-import type { Product, GenderType } from "../models/product";
+import type { Product, GenderType } from "../models/product.model";
 import { unstable_cache } from "next/cache";
 import { productMapper } from "../mappers/product.mapper";
 import { prisma } from "@/shared/config/prisma";
