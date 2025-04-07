@@ -1,12 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useCart } from "@/core/shop/store/useCart";
 import CartContainer from "../cart-container/CartContainer";
 import CartList from "../cart-list/CartList";
 import CartSummary from "../cart-summary/CartSummary";
 import EmptyCart from "../empty-cart/EmptyCart";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
-import { useEffect, useState } from "react";
 
 function Cart() {
   const items = useCart((s) => s.items);

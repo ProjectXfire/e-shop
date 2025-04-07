@@ -6,6 +6,6 @@ export const addressSchema = Yup.object().shape({
   address: Yup.string().required(),
   postalCode: Yup.string().required(),
   city: Yup.string().required(),
-  country: Yup.string().required(),
+  countryId: Yup.string().required(),
   phone: Yup.string().required(),
 });

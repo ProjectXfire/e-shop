@@ -1,9 +1,9 @@
 "use client";
 
-import type { Address } from "@/core/shop/models/address.model";
+import type { Address } from "@/core/payment/models/address.model";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { removeAddress } from "@/core/shop/services/delete-address.service";
+import { removeAddress } from "@/core/payment/services/delete-address.service";
 import { useAddress } from "@/core/shop/store/useAddress";
 import { useDeleteModal } from "@/shared/stores/useDeleteModal";
 import styles from "./styles.module.css";
@@ -23,12 +23,9 @@ interface Props {
 
 function AddressList({ addressList, userId }: Props): React.ReactElement {
   const router = useRouter();
-  const items = useAddress((s) => s.items);
-  const setAllAddress = useAddress((s) => s.setAllAddress);
   const [isLoading, setIsLoading] = useState(true);
   const selectedAddress = useAddress((s) => s.selectedAddress);
   const setSelectedAddress = useAddress((s) => s.setSelectedAddress);
-  const remove = useAddress((s) => s.removeAddress);
   const openDeleteModal = useDeleteModal((s) => s.open);
   const setDeleteAction = useDeleteModal((s) => s.setAction);
 
@@ -43,12 +40,12 @@ function AddressList({ addressList, userId }: Props): React.ReactElement {
     if (error) toastMessage.error(error);
     if (success) {
       toastMessage.success(success);
-      remove(addressId);
+      router.refresh();
     }
   };
 
   const handleAddressSelected = (id: string): void => {
-    const selected = items.find((item) => item.id === id);
+    const selected = addressList?.find((item) => item.id === id);
     if (!selected) return;
     setSelectedAddress(selected);
   };
@@ -58,7 +55,7 @@ function AddressList({ addressList, userId }: Props): React.ReactElement {
     router.push("/checkout");
   };
 
-  const itemsValues = items.map((address) => ({
+  const itemsValues = addressList?.map((address) => ({
     value: address.id,
     label: (
       <div className={styles["selection-item"]}>
@@ -68,7 +65,7 @@ function AddressList({ addressList, userId }: Props): React.ReactElement {
           <p>{address.address}</p>
           <p>{address.postalCode}</p>
           <p>{address.city}</p>
-          <p>{address.country}</p>
+          <p>{address.country.name}</p>
           <p>{address.phone}</p>
         </div>
         <ButtonAnimated
@@ -84,11 +81,10 @@ function AddressList({ addressList, userId }: Props): React.ReactElement {
 
   useEffect(() => {
     setIsLoading(false);
-    setAllAddress(addressList ?? []);
   }, []);
 
   if (isLoading) return <AddressListSkeleton />;
-  if (!addressList)
+  if (!itemsValues)
     return (
       <section className={styles["address-list"]}>
         <TitleAnimated title="Eliga la dirección de entrega" />
@@ -103,7 +99,7 @@ function AddressList({ addressList, userId }: Props): React.ReactElement {
     <section className={styles["address-list"]}>
       <TitleAnimated title="Eliga la dirección de entrega" />
       <SeparatorAnimated />
-      {items.length === 0 ? (
+      {itemsValues.length === 0 ? (
         <div className={styles["address-list__message"]}>
           <ChipAnimated text="No existe ninguna dirección registrada" />
         </div>

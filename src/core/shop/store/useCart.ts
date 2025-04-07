@@ -9,6 +9,7 @@ interface CartState {
   addItem: (item: CartDto) => void;
   updateQuantity: (id: string, quantity: number) => void;
   deleteItem: (id: string) => void;
+  clearCart: () => void;
 }
 
 export const useCart = create<CartState>()(
@@ -64,6 +65,7 @@ export const useCart = create<CartState>()(
           );
           return { ...state, items: cloneCart, totalItems, totalPrice };
         }),
+      clearCart: () => set({ items: [], totalPrice: 0, totalItems: 0 }),
     }),
     { name: "cart" }
   )

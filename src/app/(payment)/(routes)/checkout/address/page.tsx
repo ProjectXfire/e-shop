@@ -1,5 +1,6 @@
 import { auth } from "@auth";
-import { getAddressLissByUser } from "@/core/shop/services/get-address-list.service";
+import { getCountries } from "@/core/payment/services/get-countries.service";
+import { getAddressLissByUser } from "@/core/payment/services/get-address-list.service";
 import AddressContainer from "@/app/(payment)/_components/address-container/AddressContainer";
 import AddressForm from "@/app/(payment)/_components/address-form/AddressForm";
 import AddressHeader from "@/app/(payment)/_components/address-header/AddressHeader";
@@ -10,6 +11,7 @@ import PaddingContainer from "@/shared/components/containers/padding-container/P
 
 async function AddressPage(): Promise<React.ReactElement> {
   const session = await auth();
+  const { data: countries } = await getCountries();
   const { data } = await getAddressLissByUser(session?.user.id);
 
   return (
@@ -18,7 +20,7 @@ async function AddressPage(): Promise<React.ReactElement> {
         <AddressHeader />
         <FadeinContainer>
           <AddressContainer>
-            <AddressForm userId={session?.user.id} />
+            <AddressForm userId={session?.user.id} countries={countries} />
             <AddressList addressList={data} userId={session?.user.id} />
           </AddressContainer>
         </FadeinContainer>

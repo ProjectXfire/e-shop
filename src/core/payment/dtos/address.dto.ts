@@ -1,9 +1,9 @@
-export interface createAddressDto {
+export interface CreateAddressDto {
   firstName: string;
   lastName: string;
   address: string;
   postalCode: string;
   city: string;
-  country: string;
+  countryId: string;
   phone: string;
 }

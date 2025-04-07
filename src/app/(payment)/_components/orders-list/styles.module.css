@@ -1,8 +1,14 @@
+.orders-list-container {
+  padding: 10px 0px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-purple-1) var(--color-purple-4);
+}
+
 .orders-list {
   margin-top: 30px;
   width: 100%;
   min-width: 600px;
-  overflow: auto;
 }
 
 .table-header {

@@ -1,9 +1,9 @@
-import type { Cart } from "@/core/shop/models/cart.model";
+import type { OrderItem } from "@/core/payment/models/order.model";
 import NextImage from "next/image";
 import styles from "./styles.module.css";
 
 interface Props {
-  products: Cart[];
+  products: OrderItem[];
 }
 
 function OrderProducts({ products }: Props): React.ReactElement {
@@ -13,20 +13,20 @@ function OrderProducts({ products }: Props): React.ReactElement {
         <article className={styles["order-product"]} key={i}>
           <NextImage
             className={styles["order-product__image"]}
-            src={`/products/${item.images[0]}`}
-            alt={item.title}
+            src={item.product.images[0]}
+            alt={item.product.title}
             width={60}
             height={60}
           />
           <div className={styles["order-product__content"]}>
-            <p>{item.title}</p>
+            <p>{item.product.title}</p>
             <div className={styles.content__price}>
               <p>${item.price}</p>
               <p>x</p>
-              <p>{item.qtty}</p>
+              <p>{item.quantity}</p>
             </div>
             <p className={styles.content__total}>
-              <span>Subtotal:</span> <span>${item.price * item.qtty}</span>
+              <span>Subtotal:</span> <span>${item.price * item.quantity}</span>
             </p>
           </div>
         </article>

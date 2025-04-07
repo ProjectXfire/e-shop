@@ -6,7 +6,7 @@ import MaxWidthContainer from "@/shared/components/containers/max-width-containe
 import PaddingContainer from "@/shared/components/containers/padding-container/PaddingContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 
-function CheckoutPage(): React.ReactElement {
+async function CheckoutPage(): Promise<React.ReactElement> {
   return (
     <MaxWidthContainer>
       <PaddingContainer>

@@ -69,7 +69,7 @@ function Sidebar({ user }: Props): React.ReactElement {
               <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/profile")}>
                 <IoPersonOutline size={20} /> Perfil
               </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
+              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/orders")}>
                 <IoTicketOutline size={20} />
                 Mis Ordenes
               </ButtonAnimated>

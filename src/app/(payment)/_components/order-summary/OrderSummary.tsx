@@ -1,31 +1,86 @@
 "use client";
 
+import type {
+  CreateOrderAddressDto,
+  CreateOrderDto,
+  CreateOrderItemDto,
+} from "@/core/payment/dtos/order.dto";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+import { createOrder } from "@/core/payment/services/create-order.service";
 import { useCart } from "@/core/shop/store/useCart";
+import { useAddress } from "@/core/shop/store/useAddress";
 import { currencyFormat } from "@/shared/utils/currency-format";
 import styles from "./styles.module.css";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 import SkeletonAnimated from "@/shared/components/animations/skeleton-animated/SkeletonAnimated";
+import { toastMessage } from "@/shared/components/message/ToastMessage";
+
+const shippingPercentage = 0.1;
+const taxesPercentage = 0.12;
 
 function OrderSummary(): React.ReactElement {
   const router = useRouter();
-  const items = useCart((s) => s.items);
+  const cartItems = useCart((s) => s.items);
   const totalItems = useCart((s) => s.totalItems);
   const totalPrice = useCart((s) => s.totalPrice);
+  const clearCart = useCart((s) => s.clearCart);
+  const selectedAddress = useAddress((s) => s.selectedAddress);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
-  const shipping = totalPrice * 0.1;
-  const taxes = totalPrice * 0.12;
+  const shipping = totalPrice * shippingPercentage;
+  const taxes = totalPrice * taxesPercentage;
 
-  const handleOrder = (): void => {
-    // Crear orden
-    router.push(`/orders/${"2"}`);
+  const handleOrder = async (): Promise<void> => {
+    if (!selectedAddress || cartItems.length === 0) return;
+    setIsSaving(true);
+    const { firstName, lastName, address, country, city, phone, postalCode } = selectedAddress;
+    const productsOrder: CreateOrderItemDto[] = cartItems.map((item) => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      size: item.size,
+      price: item.price,
+    }));
+    const orderAddress: CreateOrderAddressDto = {
+      firstName,
+      lastName,
+      address,
+      countryId: country.id,
+      city,
+      phone,
+      postalCode,
+    };
+    const order: CreateOrderDto = {
+      itemsInOrder: totalItems,
+      subtotal: totalPrice,
+      delivery: shipping,
+      tax: taxes,
+      total: totalPrice + shipping + taxes,
+      isPaid: false,
+    };
+    const {
+      error,
+      success,
+      data: orderId,
+    } = await createOrder({
+      items: productsOrder,
+      address: orderAddress,
+      order,
+    });
+    if (error) {
+      toastMessage.error(error);
+      setIsSaving(false);
+    }
+    if (success) {
+      clearCart();
+      router.push(`/orders/${orderId}`);
+    }
   };
 
   useEffect(() => {
@@ -34,7 +89,7 @@ function OrderSummary(): React.ReactElement {
 
   if (isLoading) return <OrderSummarySkeleton />;
 
-  if (items.length === 0) redirect("/cart");
+  if (cartItems.length === 0 && !isSaving) redirect("/cart");
 
   return (
     <section className={styles["order-summary"]}>
@@ -51,7 +106,7 @@ function OrderSummary(): React.ReactElement {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, i) => (
+          {cartItems.map((item, i) => (
             <tr key={i}>
               <td className={styles["table-data"]}>
                 <NextImage
@@ -109,7 +164,11 @@ function OrderSummary(): React.ReactElement {
           políticas de privacidad
         </NextLink>
       </div>
-      <ButtonAnimated subBlockColor="var(--color-purple-4)" onClick={handleOrder}>
+      <ButtonAnimated
+        subBlockColor="var(--color-purple-4)"
+        disabled={isSaving}
+        onClick={handleOrder}
+      >
         Crear orden
       </ButtonAnimated>
     </section>
