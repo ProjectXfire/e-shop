@@ -8,19 +8,9 @@ export async function getOrdersByUser(): Promise<Response<OrderTable[] | null>> 
   try {
     const session = await auth();
     const userId = session?.user.id;
-    if (!userId)
-      return {
-        error: "Usuario no autenticado",
-        success: null,
-        data: null,
-      };
+    if (!userId) throw new Error("Usuario no autenticado");
     const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (!user)
-      return {
-        error: "Usuario no encontrado",
-        success: null,
-        data: null,
-      };
+    if (!user) throw new Error("Usuario no encontrado");
     const orders = await prisma.order.findMany({ where: { userId } });
     const ordersTable = orders.map((order) =>
       orderTableMapper(order, `${user.firstName} ${user.lastName}`)
@@ -31,6 +21,12 @@ export async function getOrdersByUser(): Promise<Response<OrderTable[] | null>> 
       data: ordersTable,
     };
   } catch (error) {
+    if (error instanceof Error)
+      return {
+        error: error.message,
+        success: null,
+        data: null,
+      };
     return {
       error: "No se pudo cargas las órdenes",
       success: null,

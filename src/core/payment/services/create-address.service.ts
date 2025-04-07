@@ -1,14 +1,14 @@
 "use server";
 
 import type { Address } from "../models/address.model";
-import type { createAddressDto } from "../dtos/address.dto";
+import type { CreateAddressDto } from "../dtos/address.dto";
 import type { Response } from "@/shared/interfaces/response.interface";
 import { prisma } from "@/shared/config/prisma";
 import { addressMapper } from "../mappers/address.mapper";
 
 export async function createAddress(
   userId: string,
-  payload: createAddressDto
+  payload: CreateAddressDto
 ): Promise<Response<Address | null>> {
   try {
     const data = await prisma.address.create({ data: { ...payload, userId } });
