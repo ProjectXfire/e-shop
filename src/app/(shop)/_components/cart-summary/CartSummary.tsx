@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
-import { useCart } from "@/core/shop/store/useCart";
 import { currencyFormat } from "@/shared/utils/currency-format";
 
 interface Props {
@@ -22,6 +21,9 @@ function CartSummary({ totalPrice, totalItems }: Props): React.ReactElement {
   return (
     <section className={styles["cart-summary"]}>
       <TitleAnimated title="Resumen" />
+      <div className={styles["cart-summary__block"]}>
+        <p className={styles["block-key"]}>Solo incluye precio de los productos</p>
+      </div>
       <div className={styles["cart-summary__block"]}>
         <p className={styles["block-key"]}>Total de Artículos</p>
         <p>{totalItems}</p>

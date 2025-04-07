@@ -47,6 +47,7 @@ function ProductFeatures({ product }: Props): React.ReactElement {
     const { quantity, size } = featuresSelected;
     const cartItem: CartDto = {
       id: `${id}-${size}`,
+      productId: id,
       title,
       description,
       gender,

@@ -1,12 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import { useAddress } from "@/core/shop/store/useAddress";
 import styles from "./styles.module.css";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
 import TableKeyValue from "@/shared/components/table-key-value/TableKeyValue";
-import { useEffect, useState } from "react";
 import SkeletonAnimated from "@/shared/components/animations/skeleton-animated/SkeletonAnimated";
 
 function AddressSummary(): React.ReactElement {
@@ -18,7 +18,7 @@ function AddressSummary(): React.ReactElement {
   }, []);
 
   if (isLoading) return <AddressSummarySkeleton />;
-  if (!selectedAddress) redirect("/checkout/address");
+  if (!selectedAddress) redirect("/cart");
 
   const fields = [
     { key: "Nombres", value: selectedAddress.firstName },
@@ -26,7 +26,7 @@ function AddressSummary(): React.ReactElement {
     { key: "Dirección", value: selectedAddress.address },
     { key: "Código postal", value: selectedAddress.postalCode },
     { key: "Ciudad", value: selectedAddress.city },
-    { key: "País", value: selectedAddress.country },
+    { key: "País", value: selectedAddress.country.name },
     { key: "Teléfono", value: selectedAddress.phone },
   ];
 

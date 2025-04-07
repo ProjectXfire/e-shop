@@ -1,34 +1,45 @@
+import type { OrderAddress } from "@/core/payment/models/order.model";
 import styles from "./styles.module.css";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import TableKeyValue from "@/shared/components/table-key-value/TableKeyValue";
+import { currencyFormat } from "@/shared/utils/currency-format";
 
 interface Props {
   items: number;
-  subtotal: number;
-  taxes: number;
+  subtotal: string;
+  delivery: string;
+  total: string;
+  taxes: string;
+  address: OrderAddress;
 }
 
-function OrderPrice({ items, subtotal, taxes }: Props): React.ReactElement {
-  const taxesTotal = subtotal * (taxes / 100);
-  const total = taxesTotal + subtotal;
-
+function OrderPrice({
+  items,
+  subtotal,
+  taxes,
+  delivery,
+  total,
+  address,
+}: Props): React.ReactElement {
   const fields = [
     { key: "No. Productos", value: `${items}` },
     { key: "Subtotal", value: `${subtotal}` },
-    { key: `Impuestos (${taxes}%)`, value: `${taxesTotal}` },
+    { key: `Gastos de envío (10%)`, value: `${delivery}` },
+    { key: `Impuestos (12%)`, value: `${taxes}` },
   ];
 
   return (
     <div className={styles["order-price"]}>
       <TitleAnimated title="Dirección de entrega" />
       <div className={styles["order-price__address"]}>
-        <p>My Super nombre y apellido</p>
-        <p>My Super dirección en la avenida nose que</p>
-        <p>12493</p>
-        <p>Popirate</p>
-        <p>Perú</p>
-        <p>+34-34343-56</p>
+        <p>{address.firstName}</p>
+        <p>{address.lastName}</p>
+        <p>{address.address}</p>
+        <p>{address.city}</p>
+        <p>{address.country.name}</p>
+        <p>{address.postalCode}</p>
+        <p>{address.phone}</p>
       </div>
       <SeparatorAnimated />
       <TitleAnimated title="Resumen de la orden" />
@@ -38,7 +49,7 @@ function OrderPrice({ items, subtotal, taxes }: Props): React.ReactElement {
       <SeparatorAnimated />
       <div className={styles["order-price__total"]}>
         <p>Total:</p>
-        <p>${total}</p>
+        <p>{total}</p>
       </div>
     </div>
   );

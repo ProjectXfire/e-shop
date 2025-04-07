@@ -1,24 +1,31 @@
+import { getOrdersByUser } from "@/core/payment/services/get-orders.service";
 import OrdersList from "../../_components/orders-list/OrdersList";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import PaddingContainer from "@/shared/components/containers/padding-container/PaddingContainer";
+import Message from "@/shared/components/message/Message";
 
-const orders = [
-  { id: "1", name: "Pepe Pancho", status: "Pagado" },
-  { id: "2", name: "Pepe Pancho 2", status: "Pendiente" },
-  { id: "3", name: "Pepe Pancho 3", status: "Pendiente" },
-  { id: "4", name: "Pepe Pancho 4", status: "Pagado" },
-  { id: "5", name: "Pepe Pancho 5", status: "Pagado" },
-];
+async function MyOrdersPage(): Promise<React.ReactElement> {
+  const { error, data } = await getOrdersByUser();
 
-function MyOrdersPage(): React.ReactElement {
+  if (error)
+    return (
+      <MaxWidthContainer>
+        <FadeinContainer>
+          <PaddingContainer>
+            <Message variant="error" message={error} />
+          </PaddingContainer>
+        </FadeinContainer>
+      </MaxWidthContainer>
+    );
+
   return (
     <MaxWidthContainer>
       <FadeinContainer>
         <PaddingContainer>
           <TitleAnimated title="Ordernes" subtitle="Todas mis órdenes" />
-          <OrdersList orders={orders} />
+          <OrdersList orders={data!} />
         </PaddingContainer>
       </FadeinContainer>
     </MaxWidthContainer>

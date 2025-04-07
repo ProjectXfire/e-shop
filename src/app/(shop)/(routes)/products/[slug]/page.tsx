@@ -6,7 +6,6 @@ import ProductFeatures from "@/app/(shop)/_components/product-features/ProductFe
 import SlideShow from "@/app/(shop)/_components/slide-show/SlideShow";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
-import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import ProductStock from "@/app/(shop)/_components/product-features/ProductStock";
 
 interface Props {

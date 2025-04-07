@@ -1,3 +1,5 @@
+import type { Country } from "./country.model";
+
 export interface Address {
   id: string;
   firstName: string;
@@ -5,6 +7,7 @@ export interface Address {
   address: string;
   postalCode: string;
   city: string;
-  country: string;
+  countryId: string;
+  country: Country;
   phone: string;
 }

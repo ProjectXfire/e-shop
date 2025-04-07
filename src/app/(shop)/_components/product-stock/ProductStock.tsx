@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import { getProductStockBySlug } from "@/core/shop/services/get-product.service";
+import { getStockBySlug } from "@/core/shop/services/get-product.service";
 
 interface Props {
   slug: string;
@@ -14,7 +14,7 @@ function ProductStock({ slug }: Props): React.ReactElement {
 
   useEffect(() => {
     setIsLoading(true);
-    getProductStockBySlug(slug)
+    getStockBySlug(slug)
       .then((value) => {
         setInStock(value);
       })

@@ -1,12 +1,12 @@
 "use client";
 
-import type { createAddressDto } from "@/core/shop/dtos/address.dto";
+import type { createAddressDto } from "@/core/payment/dtos/address.dto";
+import type { Country } from "@/core/payment/models/country.model";
 import { useState } from "react";
-import { Formik, Form, FormikState } from "formik";
-import { useAddress } from "@/core/shop/store/useAddress";
-import { createAddress } from "@/core/shop/services/create-address.service";
-import { addressSchema } from "@/core/shop/schemas/address.schema";
-import { countries } from "@/shared/assets/countries";
+import { useRouter } from "next/navigation";
+import { Formik, Form } from "formik";
+import { createAddress } from "@/core/payment/services/create-address.service";
+import { addressSchema } from "@/core/payment/schemas/address.schema";
 import styles from "./styles.module.css";
 import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
@@ -17,11 +17,12 @@ import { toastMessage } from "@/shared/components/message/ToastMessage";
 
 interface Props {
   userId?: string;
+  countries: Country[];
 }
 
-function AddressForm({ userId }: Props): React.ReactElement {
-  const addAddress = useAddress((s) => s.addAddress);
+function AddressForm({ userId, countries }: Props): React.ReactElement {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const countriesItems = countries.map((country) => ({ value: country.id, label: country.name }));
 
@@ -32,7 +33,7 @@ function AddressForm({ userId }: Props): React.ReactElement {
     if (error) toastMessage.error(error);
     if (success) {
       toastMessage.success(success);
-      addAddress(data!);
+      router.refresh();
     }
     setIsLoading(false);
   };
@@ -48,7 +49,7 @@ function AddressForm({ userId }: Props): React.ReactElement {
           address: "",
           postalCode: "",
           city: "",
-          country: "",
+          countryId: "",
           phone: "",
         }}
         validationSchema={addressSchema}
@@ -96,8 +97,8 @@ function AddressForm({ userId }: Props): React.ReactElement {
                 placeholder="Selecciona un país"
                 items={countriesItems}
                 disabled={isLoading}
-                onChange={(value) => setFieldValue("country", value)}
-                errorMessage={errors.country && touched.country ? errors.country : ""}
+                onChange={(value) => setFieldValue("countryId", value)}
+                errorMessage={errors.countryId && touched.countryId ? errors.countryId : ""}
               />
               <InputAnimated
                 placeholder="Teléfono"

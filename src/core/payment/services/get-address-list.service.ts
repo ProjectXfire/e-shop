@@ -13,7 +13,7 @@ export async function getAddressLissByUser(userId?: string): Promise<Response<Ad
       data: null,
     };
   try {
-    const data = await prisma.address.findMany({ where: { userId } });
+    const data = await prisma.address.findMany({ where: { userId }, include: { country: true } });
     const addressList = data.map((item) => addressMapper(item));
     return {
       error: null,
