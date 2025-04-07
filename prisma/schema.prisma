@@ -109,7 +109,7 @@ model Order {
   delivery Float
   total Float
   itemsInOrder Int
-  isPaid Boolean
+  isPaid Boolean? @default(false)
   paidAt DateTime?
   transactionId String?
   createdAt DateTime @default(now())

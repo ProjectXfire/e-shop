@@ -1,14 +1,12 @@
-"use client";
-
 import type { Order } from "@/core/payment/models/order.model";
 import { IoCardOutline } from "react-icons/io5";
+import { currencyFormat } from "@/shared/utils/currency-format";
 import styles from "./styles.module.css";
 import OrderProducts from "../order-products/OrderProducts";
 import OrderPrice from "../order-price/OrderPrice";
+import PayPalButton from "../paypal-button/PayPalButton";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 import ChipAnimated from "@/shared/components/animations/chip-animated/ChipAnimated";
-import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
-import { currencyFormat } from "@/shared/utils/currency-format";
 
 interface Props {
   order: Order;
@@ -40,7 +38,7 @@ function Order({ order }: Props): React.ReactElement {
           subtotal={currencyFormat(order.subtotal)}
           total={currencyFormat(order.total)}
         />
-        <ButtonAnimated subBlockColor="var(--color-purple-4)">Pagar</ButtonAnimated>
+        {!order.isPaid && <PayPalButton orderId={order.id} amount={order.total} />}
       </div>
     </section>
   );

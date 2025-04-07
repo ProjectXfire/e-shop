@@ -18,11 +18,12 @@ export async function verifyUserAuthentication(email: string, password: string):
 
 export async function verifyUserToken(email?: string | null): Promise<Response<User | null>> {
   try {
-    if (!email) return { error: "Falta enviar el email", success: null, data: null };
+    if (!email) throw new Error("Falta enviar el email");
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) return { error: "Usuario no encontrado", success: null, data: null };
+    if (!user) throw new Error("Usuario no encontrado");
     return { error: null, success: "Datos cargados", data: userMapper(user) };
   } catch (error) {
+    if (error instanceof Error) return { error: error.message, success: null, data: null };
     return { error: "Algo salió mal!", success: null, data: null };
   }
 }
