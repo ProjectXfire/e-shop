@@ -18,21 +18,6 @@
   gap: 12px;
 }
 
-.product-feature__stock {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 1.4rem;
-  color: var(--color-purple-2);
-  font-weight: bold;
-}
-
-.product-feature__stock p:nth-of-type(2) {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-purple-5);
-}
-
 .product-feature__description {
   display: flex;
   flex-direction: column;

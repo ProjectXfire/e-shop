@@ -1,10 +1,10 @@
 "use client";
 
-import type { Session } from "next-auth";
 import type { User } from "@/core/user/models/user.model";
 import { useRouter } from "next/navigation";
 import { useSidebar } from "@/core/shop/store/useSidebar";
 import { closeSession } from "@/core/auth/services/auth.service";
+import { updateTokenUser } from "@/core/user/services/update-user.service";
 import styles from "./styles.module.css";
 import {
   IoCloseOutline,
@@ -41,6 +41,7 @@ function Sidebar({ user }: Props): React.ReactElement {
 
   const handleCloseSession = async (): Promise<void> => {
     const isClossed = await closeSession();
+    await updateTokenUser();
     if (isClossed) router.refresh();
     close();
   };

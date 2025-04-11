@@ -4,6 +4,7 @@ import type { User } from "@/core/user/models/user.model";
 import { useRouter } from "next/navigation";
 import { useAdminSidebar } from "@/core/admin/store/useAdminSidebar";
 import { closeSession } from "@/core/auth/services/auth.service";
+import { updateTokenUser } from "@/core/user/services/update-user.service";
 import styles from "./styles.module.css";
 import {
   IoCloseOutline,
@@ -43,6 +44,7 @@ function Sidebar({ user }: Props): React.ReactElement {
 
   const handleCloseSession = async (): Promise<void> => {
     const isClossed = await closeSession();
+    await updateTokenUser();
     if (isClossed) router.refresh();
     close();
   };
@@ -68,7 +70,7 @@ function Sidebar({ user }: Props): React.ReactElement {
               onChange={(value) => console.log(value)}
             />
             <div className={styles.sidebar__links}>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
+              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/profile")}>
                 <IoPersonOutline size={20} /> Perfil
               </ButtonAnimated>
               <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
@@ -86,13 +88,19 @@ function Sidebar({ user }: Props): React.ReactElement {
             </div>
             <div className={styles.sidebar__separator} />
             <div className={styles.sidebar__links}>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
+              <ButtonAnimated
+                contentStyle={styles.link}
+                onClick={() => navigateTo("/admin/products")}
+              >
                 <IoShirtOutline size={20} /> Productos
               </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
+              <ButtonAnimated
+                contentStyle={styles.link}
+                onClick={() => navigateTo("/admin/orders")}
+              >
                 <IoTicketOutline size={20} /> Ordenes
               </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/")}>
+              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/admin/users")}>
                 <IoPeopleOutline size={20} /> Usuarios
               </ButtonAnimated>
             </div>

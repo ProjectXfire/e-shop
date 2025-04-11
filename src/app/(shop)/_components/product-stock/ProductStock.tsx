@@ -21,7 +21,7 @@ function ProductStock({ slug }: Props): React.ReactElement {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [slug]);
 
   return (
     <div className={styles["product-stock"]}>

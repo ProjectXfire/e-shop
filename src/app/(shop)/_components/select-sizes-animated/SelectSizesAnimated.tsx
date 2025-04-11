@@ -9,15 +9,15 @@ type Values = { value: ValidSize; label: string };
 interface Props {
   values: Values[];
   defaultValue: ValidSize;
-  onSelecValue: (value: ValidSize) => void;
+  onSelectedValue: (value: ValidSize) => void;
 }
 
-function SelectAnimated({ values, onSelecValue, defaultValue }: Props): React.ReactElement {
+function SelectAnimated({ values, onSelectedValue, defaultValue }: Props): React.ReactElement {
   const [selectedValue, setSelectedValue] = useState<ValidSize>(defaultValue);
 
   const handleSelected = (selected: ValidSize): void => {
     setSelectedValue(selected);
-    onSelecValue(selected);
+    onSelectedValue(selected);
   };
 
   return (

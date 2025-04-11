@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
+
 function AdminPage(): React.ReactElement {
-  return <div>AdminPage</div>;
+  redirect("/admin/products");
 }
 export default AdminPage;

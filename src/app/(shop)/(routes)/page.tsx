@@ -41,7 +41,7 @@ async function ShopPage({ searchParams }: Props): Promise<React.ReactElement> {
         <FadeinContainer>
           <TitleAnimated title="Tienda" subtitle="Todos los productos" />
           <ProductsGrid products={products} />
-          <ProductsPagination pages={pages} />
+          <ProductsPagination pages={pages} defaultPage={page} />
         </FadeinContainer>
       </PaddingContainer>
     </MaxWidthContainer>

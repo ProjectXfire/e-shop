@@ -7,7 +7,7 @@ export async function removeAddress(addressId: string, userId: string): Promise<
   try {
     await prisma.address.delete({ where: { id: addressId, userId } });
     return { error: null, success: "Se eliminó la dirección", data: null };
-  } catch (error) {
+  } catch {
     return { error: "No se pudo eliminar la dirección", success: null, data: null };
   }
 }

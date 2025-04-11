@@ -6,7 +6,7 @@ import ProductFeatures from "@/app/(shop)/_components/product-features/ProductFe
 import SlideShow from "@/app/(shop)/_components/slide-show/SlideShow";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
-import ProductStock from "@/app/(shop)/_components/product-features/ProductStock";
+import ProductStock from "@/app/(shop)/_components/product-stock/ProductStock";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -39,7 +39,7 @@ async function ProductPage({ params }: Props): Promise<React.ReactElement> {
         <ProductContainer>
           <SlideShow images={product.images} />
           <section className="flex flex-col gap-[30px] px-[10px] py-[15px]">
-            <ProductStock productSlug={slug} />
+            <ProductStock slug={slug} />
             <ProductFeatures product={product} />
           </section>
         </ProductContainer>

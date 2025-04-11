@@ -1,9 +1,23 @@
 import type { Order, OrderItem, OrderTable } from "../models/order.model";
 
+import {
+  Order as OrderDb,
+  OrderAddress as OrderAddressDb,
+  OrderItem as OrderItemDb,
+} from "@prisma/client";
+
+interface AddressDbWithJoin extends OrderAddressDb {
+  country: { id: string; name: string; code: string };
+}
+
+interface OrderItemDbWithJoin extends OrderItemDb {
+  product: { title: string; images: { url: string }[] };
+}
+
 export function orderMapper(
-  order: Record<string, any>,
-  items: Record<string, any>[],
-  address: Record<string, any>
+  order: OrderDb,
+  items: OrderItemDbWithJoin[],
+  address: AddressDbWithJoin
 ): Order {
   const { id: orderId, subtotal, tax, delivery, total, itemsInOrder, isPaid, userId } = order;
   const {
@@ -25,7 +39,7 @@ export function orderMapper(
     price: item.price,
     product: {
       title: item.product.title,
-      images: item.product.images.map((img: any) => img.url),
+      images: item.product.images.map((img) => img.url),
     },
     quantity: item.quantity,
     size: item.size,
@@ -57,8 +71,32 @@ export function orderMapper(
   return orderModel;
 }
 
-export function orderTableMapper(order: Record<string, any>, user: string): OrderTable {
-  const { id, isPaid } = order;
-  const orderTable: OrderTable = { id, shortId: id.substring(0, 8), isPaid, user };
+interface OrderDbWithJoin extends OrderDb {
+  user: { firstName: string; lastName: string };
+}
+
+export function orderTableAdminMapper(order: OrderDbWithJoin) {
+  const { id, isPaid, paidAt, createdAt, user } = order;
+  const orderTable: OrderTable = {
+    id,
+    shortId: id.substring(0, 8),
+    isPaid,
+    user: `${user.firstName} ${user.lastName}`,
+    paidAt,
+    createdAt,
+  };
+  return orderTable;
+}
+
+export function orderTableMapper(order: OrderDb, user: string): OrderTable {
+  const { id, isPaid, paidAt, createdAt } = order;
+  const orderTable: OrderTable = {
+    id,
+    shortId: id.substring(0, 8),
+    isPaid,
+    user,
+    paidAt,
+    createdAt,
+  };
   return orderTable;
 }

@@ -9,12 +9,12 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
     const data = await prisma.product.findUnique({
       where: { slug },
-      include: { images: { select: { url: true } } },
+      include: { images: { select: { url: true } }, category: true },
     });
     if (!data) throw new Error("Product not found");
     const product = productMapper(data);
     return product;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -27,7 +27,7 @@ export async function getStockBySlug(slug: string): Promise<number> {
     });
     if (!data) throw new Error("Product not found");
     return data.inStock;
-  } catch (error) {
+  } catch {
     return 0;
   }
 }
@@ -38,7 +38,7 @@ export async function getProductBySlugCache(slug: string): Promise<Product | nul
       async () => {
         return await prisma.product.findUnique({
           where: { slug },
-          include: { images: { select: { url: true } } },
+          include: { images: { select: { url: true } }, category: true },
         });
       },
       [`product-${slug}`],
@@ -48,7 +48,7 @@ export async function getProductBySlugCache(slug: string): Promise<Product | nul
     if (!data) throw new Error("Product not found");
     const product = productMapper(data);
     return product;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

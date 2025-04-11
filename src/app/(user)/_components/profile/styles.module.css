@@ -1,0 +1,30 @@
+.profile {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card-avatar {
+  object-fit: cover;
+  mix-blend-mode: hard-light;
+  background-color: var(--color-purple-6);
+  border-radius: 50%;
+}
+
+.card-detail {
+}
+
+@media (width < 768px) {
+  .profile__card {
+    justify-content: center;
+  }
+}

@@ -43,7 +43,7 @@ export async function closeSession() {
   try {
     await signOut({ redirect: false });
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

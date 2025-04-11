@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { auth } from "@auth";
 import Sidebar from "@/app/(shop)/_components/sidebar/Sidebar";
 import TopMenu from "@/app/(shop)/_components/top-menu/TopMenu";

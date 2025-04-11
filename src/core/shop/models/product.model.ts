@@ -1,3 +1,5 @@
+import type { Category } from "./category.model";
+
 export interface Product {
   id: string;
   description: string;
@@ -8,10 +10,9 @@ export interface Product {
   slug: string;
   tags: string[];
   title: string;
-  category?: ValidType;
+  category: Category;
   gender: GenderType;
 }
 
 export type GenderType = "men" | "women" | "kids" | "unisex";
 export type ValidSize = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
-export type ValidType = "shirts" | "pants" | "hoodies" | "hats";

@@ -68,7 +68,7 @@ function ProductFeatures({ product }: Props): React.ReactElement {
         <p className={styles["product-subtitle"]}>Tamaño</p>
         <SelectSizesAnimated
           values={sizes}
-          onSelecValue={handleSelectSize}
+          onSelectedValue={handleSelectSize}
           defaultValue={product.sizes[0]}
         />
       </div>
