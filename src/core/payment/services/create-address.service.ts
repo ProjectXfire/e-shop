@@ -11,14 +11,17 @@ export async function createAddress(
   payload: CreateAddressDto
 ): Promise<Response<Address | null>> {
   try {
-    const data = await prisma.address.create({ data: { ...payload, userId } });
+    const data = await prisma.address.create({
+      data: { ...payload, userId },
+      include: { country: true },
+    });
     const address = addressMapper(data);
     return {
       error: null,
       success: "Se añadió una nueva dirección",
       data: address,
     };
-  } catch (error) {
+  } catch {
     return {
       error: "Hubo un problema al crear la dirección",
       success: null,

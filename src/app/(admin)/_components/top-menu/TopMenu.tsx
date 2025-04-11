@@ -2,6 +2,7 @@ import type { User } from "@/core/user/models/user.model";
 import NextLink from "next/link";
 import styles from "./styles.module.css";
 import MenuButton from "../menu-button/MenuButton";
+import TopMenuLinks from "./TopMenuLinks";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 
 interface Props {
@@ -13,7 +14,8 @@ function TopMenu({ user }: Props): React.ReactElement {
     <div className={styles["navbar-container"]}>
       <MaxWidthContainer>
         <nav className={styles.navbar}>
-          <NextLink href="/admin">E-Shop - Admin</NextLink>
+          <NextLink href="/admin/products">E-Shop - Admin</NextLink>
+          <TopMenuLinks />
           <div className={styles.navbar__actions}>
             {user && (
               <p className={styles["actions-user"]}>{`${user?.firstName} ${user?.lastName}`}</p>

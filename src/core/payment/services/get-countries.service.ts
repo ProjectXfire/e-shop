@@ -14,7 +14,7 @@ export async function getCountries(): Promise<Response<Country[]>> {
       success: "Se cargaron los paises",
       data: countries,
     };
-  } catch (error) {
+  } catch {
     return {
       error: "Hubo un problema al cargar los paises",
       success: null,

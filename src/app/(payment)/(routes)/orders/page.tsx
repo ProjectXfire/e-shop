@@ -24,7 +24,7 @@ async function MyOrdersPage(): Promise<React.ReactElement> {
     <MaxWidthContainer>
       <FadeinContainer>
         <PaddingContainer>
-          <TitleAnimated title="Ordernes" subtitle="Todas mis órdenes" />
+          <TitleAnimated title="Ordenes" subtitle="Todas mis órdenes" />
           <OrdersList orders={data!} />
         </PaddingContainer>
       </FadeinContainer>

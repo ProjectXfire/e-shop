@@ -6,10 +6,11 @@ import styles from "./styles.module.css";
 
 interface Props {
   totalPages: number;
+  defaultPage?: number;
   onChangePage: (currentPage: number) => void;
 }
 
-function Pagination({ onChangePage, totalPages }: Props): React.ReactElement {
+function Pagination({ onChangePage, totalPages, defaultPage }: Props): React.ReactElement {
   const handlePageClick = (e: { selected: number }) => {
     onChangePage(e.selected + 1);
   };
@@ -17,6 +18,7 @@ function Pagination({ onChangePage, totalPages }: Props): React.ReactElement {
   return (
     <ReactPaginate
       className={styles.pagination}
+      initialPage={defaultPage ? defaultPage - 1 : 0}
       pageLinkClassName={styles.pagination__button}
       activeClassName={styles.pagination__active}
       previousClassName={styles.pagination__arrows}

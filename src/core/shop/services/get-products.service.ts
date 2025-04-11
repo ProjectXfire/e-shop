@@ -20,14 +20,14 @@ export async function getProducts({
   try {
     if (page < 1) page = 1;
     const data = await prisma.product.findMany({
-      include: { images: { take: 2, select: { url: true } } },
+      include: { images: { take: 2, select: { url: true } }, category: true },
       skip: (page - 1) * take,
       take,
     });
     const totalProducts = await prisma.product.count();
     const products = data.map((item) => productMapper(item));
     return { pages: Math.ceil(totalProducts / take), products };
-  } catch (error) {
+  } catch {
     return { pages: 0, products: [] };
   }
 }
@@ -42,7 +42,7 @@ export async function getProductsCache({
     const cacheFuntionList = unstable_cache(
       async () => {
         return await prisma.product.findMany({
-          include: { images: { take: 2, select: { url: true } } },
+          include: { images: { take: 2, select: { url: true } }, category: true },
           skip: (page - 1) * take,
           take,
         });
@@ -61,7 +61,7 @@ export async function getProductsCache({
     const totalProducts = await cacheFunctionTotalItems();
     const products = data.map((item) => productMapper(item));
     return { pages: Math.ceil(totalProducts / take), products };
-  } catch (error) {
+  } catch {
     return { pages: 0, products: [] };
   }
 }
@@ -74,7 +74,7 @@ export async function getProductsByGender(
     if (page < 1) page = 1;
     const gender = genderSlug as GenderType;
     const data = await prisma.product.findMany({
-      include: { images: { take: 2, select: { url: true } } },
+      include: { images: { take: 2, select: { url: true } }, category: true },
       where: { gender },
       skip: (page - 1) * take,
       take,
@@ -82,7 +82,7 @@ export async function getProductsByGender(
     const totalProducts = await prisma.product.count({ where: { gender } });
     const products = data.map((item) => productMapper(item));
     return { products, pages: Math.ceil(totalProducts / take) };
-  } catch (error) {
+  } catch {
     return { pages: 0, products: [] };
   }
 }
@@ -96,7 +96,7 @@ export async function getProductsByGenderCache(
     const gender = genderSlug as GenderType;
     const cacheFuntionList = unstable_cache(async () => {
       return await prisma.product.findMany({
-        include: { images: { take: 2, select: { url: true } } },
+        include: { images: { take: 2, select: { url: true } }, category: true },
         where: { gender },
         skip: (page - 1) * take,
         take,
@@ -113,7 +113,7 @@ export async function getProductsByGenderCache(
     const totalProducts = await cacheFunctionTotalItems();
     const products = data.map((item) => productMapper(item));
     return { products, pages: Math.ceil(totalProducts / take) };
-  } catch (error) {
+  } catch {
     return { pages: 0, products: [] };
   }
 }

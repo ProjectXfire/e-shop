@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import { IoArrowForwardCircle } from "react-icons/io5";
 import SeparatorAnimated from "../separator-animated/SeparatorAnimated";

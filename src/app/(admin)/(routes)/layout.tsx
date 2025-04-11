@@ -1,8 +1,9 @@
 import { auth } from "@auth";
+import { redirect } from "next/navigation";
 import Sidebar from "../_components/sidebar/Sidebar";
 import TopMenu from "../_components/top-menu/TopMenu";
 import { verifyUserToken } from "@/core/user/services/get-user.service";
-import { redirect } from "next/navigation";
+import DeleteModal from "@/shared/components/delete-modal/DeleteModal";
 
 interface Props {
   children: React.ReactNode;
@@ -16,7 +17,8 @@ async function AdminLayout({ children }: Props): Promise<React.ReactElement> {
 
   return (
     <main>
-      <TopMenu />
+      <DeleteModal />
+      <TopMenu user={user} />
       <Sidebar user={user} />
       {children}
     </main>

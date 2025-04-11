@@ -1,3 +1,4 @@
+import type { User } from "@/core/user/models/user.model";
 import type { Country } from "./country.model";
 
 export interface OrderTable {
@@ -5,6 +6,8 @@ export interface OrderTable {
   shortId: string;
   user: string;
   isPaid: boolean;
+  paidAt: Date | null;
+  createdAt: Date;
 }
 
 export interface Order {
@@ -17,6 +20,7 @@ export interface Order {
   itemsInOrder: number;
   isPaid: boolean;
   userId: string;
+  user?: User;
   items: OrderItem[];
   deliveryAddress: OrderAddress;
 }

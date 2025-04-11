@@ -4,7 +4,6 @@ import type { CartDto } from "@/core/shop/dtos/cart.dto";
 import styles from "./styles.module.css";
 import CartItem from "./CartItem";
 import SeparatorAnimated from "@/shared/components/animations/separator-animated/SeparatorAnimated";
-import { useCart } from "@/core/shop/store/useCart";
 
 interface Props {
   items: CartDto[];

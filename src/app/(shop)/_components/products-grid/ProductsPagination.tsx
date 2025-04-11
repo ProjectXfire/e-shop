@@ -5,9 +5,10 @@ import Pagination from "@/shared/components/pagination/Pagination";
 
 interface Props {
   pages: number;
+  defaultPage?: number;
 }
 
-function ProductsPagination({ pages }: Props): React.ReactElement {
+function ProductsPagination({ pages, defaultPage }: Props): React.ReactElement {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -18,6 +19,6 @@ function ProductsPagination({ pages }: Props): React.ReactElement {
     router.push(`${pathname}?${params}`);
   };
 
-  return <Pagination totalPages={pages} onChangePage={handlePage} />;
+  return <Pagination totalPages={pages} defaultPage={defaultPage} onChangePage={handlePage} />;
 }
 export default ProductsPagination;

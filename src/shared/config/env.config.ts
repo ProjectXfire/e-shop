@@ -3,4 +3,7 @@ export const env = {
   paypalSecret: process.env.PAYPAL_SECRET ?? "",
   paypalAuthUrl: process.env.PAYPAL_OAUTH_URL ?? "",
   paypalCheckoutOrdersUrl: process.env.PAYPAL_ORDERS_URL ?? "",
+  cloudinaryName: process.env.CLOUDINARY_NAME ?? "",
+  cloudinaryApiKey: process.env.CLOUDINARY_API_KEY ?? "",
+  cloudinarySecret: process.env.CLOUDINARY_SECRET ?? "",
 };

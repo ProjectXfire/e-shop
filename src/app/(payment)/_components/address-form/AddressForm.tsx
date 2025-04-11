@@ -1,6 +1,6 @@
 "use client";
 
-import type { createAddressDto } from "@/core/payment/dtos/address.dto";
+import type { CreateAddressDto } from "@/core/payment/dtos/address.dto";
 import type { Country } from "@/core/payment/models/country.model";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -26,10 +26,10 @@ function AddressForm({ userId, countries }: Props): React.ReactElement {
 
   const countriesItems = countries.map((country) => ({ value: country.id, label: country.name }));
 
-  const onSubmit = async (values: createAddressDto): Promise<void> => {
+  const onSubmit = async (values: CreateAddressDto): Promise<void> => {
     if (!userId) return;
     setIsLoading(true);
-    const { error, success, data } = await createAddress(userId, values);
+    const { error, success } = await createAddress(userId, values);
     if (error) toastMessage.error(error);
     if (success) {
       toastMessage.success(success);

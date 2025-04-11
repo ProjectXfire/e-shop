@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { errorFont, primaryFont } from "@/shared/assets/fonts";
 import ProviderContainer from "@/shared/components/containers/provider-container/ProviderContainer";
+import Cookies from "@/shared/components/cookie/Cookies";
 
 export const metadata: Metadata = {
   title: { template: "%s E-Shop", default: "E-Shop" },
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${primaryFont.variable} ${errorFont.variable} antialiased`}>
+        <Cookies />
         <ProviderContainer>{children}</ProviderContainer>
       </body>
     </html>

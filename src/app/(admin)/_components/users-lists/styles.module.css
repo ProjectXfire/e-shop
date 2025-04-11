@@ -1,0 +1,82 @@
+.users-list-container {
+  padding: 10px 0px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-purple-1) var(--color-purple-4);
+}
+
+.users-list {
+  margin-top: 30px;
+  width: 100%;
+  min-width: 600px;
+}
+
+.table-header {
+  background-color: var(--color-purple-5);
+}
+
+.table-head {
+  padding: 8px 5px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.table-body tr:nth-child(odd) {
+  background: var(--color-purple-3);
+}
+
+.table-data {
+  padding: 8px 5px;
+  font-size: 0.9rem;
+}
+
+.table-data__select {
+  position: relative;
+  background: var(--color-purple-1);
+  border-radius: 4px;
+}
+
+.table-data__select select {
+  width: 100%;
+  padding: 8px 12px;
+  appearance: none;
+  background: var(--color-purple-1);
+  cursor: pointer;
+  border-radius: 4px;
+  outline-color: var(--color-purple-4);
+  border: 2px dotted var(--color-purple-4);
+}
+
+.table-data__select select:focus {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: var(--color-purple-4);
+}
+
+.table-data__select::before,
+.table-data__select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.table-data__select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--color-purple-4);
+  top: 38%;
+}
+
+.table-data__select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid var(--color-purple-4);
+  top: 57%;
+}
+
+.table-data__link {
+  color: var(--color-purple-5);
+}
