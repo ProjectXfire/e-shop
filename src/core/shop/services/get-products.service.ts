@@ -1,3 +1,4 @@
+import type { Response } from "@/shared/interfaces/response.interface";
 import type { Product, GenderType } from "../models/product.model";
 import { unstable_cache } from "next/cache";
 import { productMapper } from "../mappers/product.mapper";
@@ -29,6 +30,39 @@ export async function getProducts({
     return { pages: Math.ceil(totalProducts / take), products };
   } catch {
     return { pages: 0, products: [] };
+  }
+}
+
+export async function getFilteredProducts(
+  { page = 1, take = 12 }: PaginationOptions,
+  searchValue: string
+): Promise<Response<ReturnProducts | null>> {
+  try {
+    if (page < 1) page = 1;
+    const data = await prisma.product.findMany({
+      include: { images: { take: 2, select: { url: true } }, category: true },
+      skip: (page - 1) * take,
+      take,
+      where: {
+        OR: [
+          { title: { contains: searchValue, mode: "insensitive" } },
+          { description: { contains: searchValue, mode: "insensitive" } },
+        ],
+      },
+    });
+    const totalProducts = await prisma.product.count({
+      where: {
+        OR: [{ title: { contains: searchValue } }, { description: { contains: searchValue } }],
+      },
+    });
+    const products = data.map((item) => productMapper(item));
+    return {
+      error: null,
+      success: "Productos cargados",
+      data: { pages: Math.ceil(totalProducts / take), products },
+    };
+  } catch {
+    return { error: "No se pudo cargar los productos", success: null, data: null };
   }
 }
 

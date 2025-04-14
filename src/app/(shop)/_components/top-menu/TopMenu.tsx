@@ -26,9 +26,6 @@ function TopMenu({ user }: Props): React.ReactElement {
               <p className={styles["actions-user"]}>{`${user?.firstName} ${user?.lastName}`}</p>
             )}
             <div className={styles["actions-menu"]}>
-              <LinkAnimated className={styles["navbar-icon"]} href="/search">
-                <IoSearchOutline />
-              </LinkAnimated>
               <CartCounter />
               <MenuButton />
             </div>

@@ -10,6 +10,7 @@ export function productMapper(data: ProductDbWithJoin): Product {
   const { id, title, description, inStock, price, sizes, slug, tags, gender, images, category } =
     data;
   const imagesProduct: string[] = images.map((img) => img.url);
+
   const product: Product = {
     id,
     category,

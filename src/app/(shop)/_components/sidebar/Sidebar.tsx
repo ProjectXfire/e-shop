@@ -8,7 +8,6 @@ import { updateTokenUser } from "@/core/user/services/update-user.service";
 import styles from "./styles.module.css";
 import {
   IoCloseOutline,
-  IoSearchOutline,
   IoPersonOutline,
   IoTicketOutline,
   IoLogOutOutline,
@@ -16,7 +15,6 @@ import {
 } from "react-icons/io5";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
-import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 
 interface Props {
@@ -61,23 +59,20 @@ function Sidebar({ user }: Props): React.ReactElement {
                 <TitleAnimated title={`${user.firstName} ${user.lastName}`} />
               </div>
             )}
-            <InputAnimated
-              placeholder="Search..."
-              icon={<IoSearchOutline size={20} />}
-              onChange={(value) => console.log(value)}
-            />
             <div className={styles.sidebar__links}>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/profile")}>
-                <IoPersonOutline size={20} /> Perfil
-              </ButtonAnimated>
-              <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/orders")}>
-                <IoTicketOutline size={20} />
-                Mis Ordenes
-              </ButtonAnimated>
               {user ? (
-                <ButtonAnimated contentStyle={styles.link} onClick={handleCloseSession}>
-                  <IoLogOutOutline size={20} /> Salir
-                </ButtonAnimated>
+                <>
+                  <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/profile")}>
+                    <IoPersonOutline size={20} /> Perfil
+                  </ButtonAnimated>
+                  <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/orders")}>
+                    <IoTicketOutline size={20} />
+                    Mis Ordenes
+                  </ButtonAnimated>
+                  <ButtonAnimated contentStyle={styles.link} onClick={handleCloseSession}>
+                    <IoLogOutOutline size={20} /> Salir
+                  </ButtonAnimated>
+                </>
               ) : (
                 <ButtonAnimated contentStyle={styles.link} onClick={handleLogin}>
                   <IoLogInOutline size={20} /> Entrar
@@ -88,7 +83,10 @@ function Sidebar({ user }: Props): React.ReactElement {
               <>
                 <div className={styles.sidebar__separator} />
                 <div className={styles.sidebar__links}>
-                  <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/admin")}>
+                  <ButtonAnimated
+                    contentStyle={styles.link}
+                    onClick={() => navigateTo("/admin/products")}
+                  >
                     <MdOutlineAdminPanelSettings size={20} /> Admin
                   </ButtonAnimated>
                 </div>

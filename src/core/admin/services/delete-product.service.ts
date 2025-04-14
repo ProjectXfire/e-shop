@@ -19,7 +19,6 @@ export async function deleteProduct(
     }
     return { error: null, success: "Producto eliminado", data: null };
   } catch (error) {
-    console.log(error);
     if (error instanceof Error) return { error: error.message, success: null, data: null };
     return { error: "No se pudo eliminar el producto", success: null, data: null };
   }

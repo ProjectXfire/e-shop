@@ -8,7 +8,6 @@ import { auth } from "@auth";
 
 export async function updateProductFeatures(productId: string, payload: UpdateProductDto) {
   try {
-    console.log({ productId, payload });
     const session = await auth();
     const user = session?.user;
     if (!user || user.role !== "admin") throw new Error("No tiene permisos");
