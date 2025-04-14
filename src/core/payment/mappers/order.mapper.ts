@@ -75,7 +75,7 @@ interface OrderDbWithJoin extends OrderDb {
   user: { firstName: string; lastName: string };
 }
 
-export function orderTableAdminMapper(order: OrderDbWithJoin) {
+export function orderTableAdminMapper(order: OrderDbWithJoin): OrderTable {
   const { id, isPaid, paidAt, createdAt, user } = order;
   const orderTable: OrderTable = {
     id,
