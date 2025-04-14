@@ -17,6 +17,7 @@ function SearchProduct(): React.ReactElement {
     timer.current = setTimeout(() => {
       const params = new URLSearchParams(searchParams);
       params.set("search", value);
+      params.set("page", "1");
       router.push(`${pathname}?${params}`);
     }, 500);
   };
