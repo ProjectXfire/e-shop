@@ -8,7 +8,6 @@ import { updateTokenUser } from "@/core/user/services/update-user.service";
 import styles from "./styles.module.css";
 import {
   IoCloseOutline,
-  IoSearchOutline,
   IoPersonOutline,
   IoTicketOutline,
   IoLogInOutline,
@@ -18,7 +17,6 @@ import {
   IoStorefrontOutline,
 } from "react-icons/io5";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
-import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
 
 interface Props {
@@ -64,11 +62,6 @@ function Sidebar({ user }: Props): React.ReactElement {
                 <TitleAnimated title={`${user.firstName} ${user.lastName}`} />
               </div>
             )}
-            <InputAnimated
-              placeholder="Search..."
-              icon={<IoSearchOutline size={20} />}
-              onChange={(value) => console.log(value)}
-            />
             <div className={styles.sidebar__links}>
               <ButtonAnimated contentStyle={styles.link} onClick={() => navigateTo("/profile")}>
                 <IoPersonOutline size={20} /> Perfil

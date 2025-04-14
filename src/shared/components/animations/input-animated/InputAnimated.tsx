@@ -12,6 +12,7 @@ interface Props {
   errorMessage?: string;
   disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  containerStyles?: string;
 }
 
 function InputAnimated({
@@ -22,6 +23,7 @@ function InputAnimated({
   name,
   errorMessage,
   disabled,
+  containerStyles,
   onChange,
 }: Props): React.ReactElement {
   const [value, setValue] = useState(defaultValue ?? "");
@@ -39,7 +41,7 @@ function InputAnimated({
   };
 
   return (
-    <div className={styles["input-container"]}>
+    <div className={`${styles["input-container"]} ${containerStyles}`}>
       <div className={`${styles.input} ${disabled && styles["input--disabled"]}`}>
         <div className={styles.input__content}>
           {icon && icon}
