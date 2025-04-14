@@ -71,7 +71,7 @@ export function orderMapper(
   return orderModel;
 }
 
-interface OrderDbWithJoin extends OrderDb {
+export interface OrderDbWithJoin extends OrderDb {
   user: { firstName: string; lastName: string };
 }
 

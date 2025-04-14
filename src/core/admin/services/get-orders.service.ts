@@ -1,4 +1,5 @@
 import type { OrderTable } from "@/core/payment/models/order.model";
+import type { OrderDbWithJoin } from "@/core/payment/mappers/order.mapper";
 import { orderTableAdminMapper } from "@/core/payment/mappers/order.mapper";
 import { prisma } from "@/shared/config/prisma";
 import { auth } from "@auth";
@@ -28,7 +29,7 @@ export async function getOrders({
       take,
     });
     const totalOrders = await prisma.order.count();
-    const orders = data.map((item) => orderTableAdminMapper(item));
+    const orders = data.map((item: OrderDbWithJoin) => orderTableAdminMapper(item));
     return { pages: Math.ceil(totalOrders / take), orders };
   } catch {
     return { pages: 0, orders: [] };
