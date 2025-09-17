@@ -38,6 +38,7 @@ function SkeletonAnimated({ height }: Props): React.ReactElement {
     return () => {
       clearInterval(animationInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

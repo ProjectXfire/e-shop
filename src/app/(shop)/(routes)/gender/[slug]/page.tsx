@@ -9,7 +9,6 @@ import Filters from "@/app/(shop)/_components/filters/Filters";
 import MaxWidthContainer from "@/shared/components/containers/max-width-container/MaxWidthContainer";
 import PaddingContainer from "@/shared/components/containers/padding-container/PaddingContainer";
 import FadeinContainer from "@/shared/components/containers/fadein-container/FadeinContainer";
-import Message from "@/shared/components/message/Message";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 type Params = Promise<{ slug: string }>;
@@ -20,8 +19,6 @@ interface Props {
 }
 
 export const revalidate = 3600;
-
-const title: Record<string, string> = { men: "Hombres", women: "Mujeres", kids: "Niños" };
 
 async function CategoryPage({ params, searchParams }: Props): Promise<React.ReactElement> {
   const { slug } = await params;

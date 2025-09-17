@@ -1,4 +1,3 @@
-import { viewMode, order } from "./queries";
 import {
   validateOrder,
   validatePage,

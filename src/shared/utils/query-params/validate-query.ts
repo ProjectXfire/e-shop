@@ -7,7 +7,7 @@ export function validatePage(value?: string | string[] | null): number {
     if (typeof value !== "string") return 1;
     const page = isNaN(Number(value)) ? 1 : Number(value);
     return page;
-  } catch (error) {
+  } catch {
     return 1;
   }
 }
@@ -18,7 +18,7 @@ export function validateSearchValue(value?: string | string[] | null): string {
     if (value === null) return "";
     if (typeof value !== "string") return "";
     return value;
-  } catch (error) {
+  } catch {
     return "";
   }
 }
@@ -30,7 +30,7 @@ export function validateView(value?: string | string[] | null): ViewMode {
     if (typeof value !== "string") return "grid";
     const view = (viewMode as readonly string[]).includes(value) ? value : "grid";
     return view as ViewMode;
-  } catch (error) {
+  } catch {
     return "grid";
   }
 }
@@ -42,7 +42,7 @@ export function validateOrder(value?: string | string[] | null): Order | null {
     if (typeof value !== "string") return null;
     const orderValue = (order as readonly string[]).includes(value) ? value : null;
     return orderValue as Order;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -59,7 +59,7 @@ export function validateSizes(value?: string | string[] | null): Size[] {
       if (!sizes.includes(sizesArray[i])) throw new Error();
     }
     return sizesArray as Size[];
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -85,7 +85,7 @@ export function validatePrice(value?: string | string[] | null): number[] {
     if (firstValue > secondValue) return [];
 
     return [firstValue, secondValue];
-  } catch (error) {
+  } catch {
     return [];
   }
 }

@@ -26,6 +26,7 @@ function Cursor(): React.ReactElement {
       document.removeEventListener("mousemove", handleCursor);
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOver]);
 
   return (

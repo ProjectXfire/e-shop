@@ -63,6 +63,7 @@ export const useQueryPathname = () => {
     }
     router.push(`${pathname}?${params}`);
   };
+
   const currentFilters = (): Filters => {
     const params = new URLSearchParams(searchParams);
     const order = validateOrder(params.get("order"));

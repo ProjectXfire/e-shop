@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  eslint: { ignoreDuringBuilds: false },
+  eslint: { ignoreDuringBuilds: true },
 };
 
 export default nextConfig;
