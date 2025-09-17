@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Pagination from "@/shared/components/pagination/Pagination";
+import { useQueryPathname } from "@/shared/utils/query-params/use-pathname";
 
 interface Props {
   pages: number;
@@ -9,14 +9,10 @@ interface Props {
 }
 
 function ProductsPagination({ pages, defaultPage }: Props): React.ReactElement {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const { handlePathname } = useQueryPathname();
 
   const handlePage = (page: number): void => {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", page.toString());
-    router.push(`${pathname}?${params}`);
+    handlePathname({ page });
   };
 
   return <Pagination totalPages={pages} defaultPage={defaultPage} onChangePage={handlePage} />;

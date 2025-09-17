@@ -1,0 +1,21 @@
+.products-container {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.products-filters {
+  width: 280px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.products-list {
+  width: 100%;
+}
+
+@media (width <= 768px) {
+  .products-filters {
+    display: none;
+  }
+}

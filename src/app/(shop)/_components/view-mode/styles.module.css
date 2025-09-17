@@ -1,0 +1,27 @@
+.view-mode {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.view-mode__action {
+  padding: 5px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid var(--color-purple-4);
+  border-top: 1px solid var(--color-purple-4);
+}
+
+.left {
+  border-left: 1px solid var(--color-purple-4);
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.right {
+  border-right: 1px solid var(--color-purple-4);
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.active {
+  background-color: var(--color-purple-6);
+}

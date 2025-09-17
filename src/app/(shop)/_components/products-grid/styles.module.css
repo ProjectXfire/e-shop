@@ -1,20 +1,36 @@
-/* LIST */
+/* HEADER */
+
+.products-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* GRID */
+
+.products {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
 .products-grid {
   margin-top: 30px;
   padding-bottom: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
 @media (width < 1024px) {
   .products-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (width < 768px) {
+@media (width <= 768px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -26,7 +42,7 @@
   }
 }
 
-/* ITEM */
+/* GRID ITEM */
 
 .product-item {
   position: relative;
@@ -107,5 +123,114 @@
   }
   100% {
     border-right-color: var(--color-purple-1);
+  }
+}
+
+/* LIST */
+
+.products-list {
+  width: 100%;
+  margin-top: 30px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/*LIST ITEM */
+
+.product-list-item {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+}
+
+.product-list-item__spacer {
+  flex: 1;
+}
+
+.product-list-item__image {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.product-list-item__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-purple-4);
+  font-weight: bold;
+}
+
+.content-tags {
+  text-transform: capitalize;
+  display: flex;
+  gap: 5px;
+}
+
+.content-sizes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.sizes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.size {
+  width: 32px;
+  height: 25px;
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-purple-4);
+  border-radius: 5px;
+}
+
+.content-price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@media (width <= 525px) {
+  .product-list-item {
+    gap: 10px;
+  }
+  .product-list-item__image {
+    width: 90px;
+    height: 150px;
+  }
+  .content-title {
+    font-size: 0.8rem;
+  }
+  .content-tags {
+    font-size: 0.8rem;
+  }
+  .gender {
+    font-size: 0.8rem;
+  }
+  .size {
+    width: 28px;
+    font-size: 0.6rem;
+  }
+
+  .content-price {
+    font-size: 0.9rem;
   }
 }

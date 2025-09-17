@@ -37,6 +37,12 @@
   margin-bottom: 18px;
 }
 
+.sidebar__filters {
+  display: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .sidebar-blur--active {
   transform: translateX(0%);
   opacity: 1;
@@ -71,4 +77,10 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+@media (width <= 768px) {
+  .sidebar__filters {
+    display: block;
+  }
 }

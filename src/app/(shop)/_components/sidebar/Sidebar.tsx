@@ -16,6 +16,7 @@ import {
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import ButtonAnimated from "@/shared/components/animations/button-animated/ButtonAnimated";
 import TitleAnimated from "@/shared/components/animations/title-animated/TitleAnimated";
+import Filters from "../filters/Filters";
 
 interface Props {
   user: User | null;
@@ -59,6 +60,9 @@ function Sidebar({ user }: Props): React.ReactElement {
                 <TitleAnimated title={`${user.firstName} ${user.lastName}`} />
               </div>
             )}
+            <div className={styles.sidebar__filters}>
+              <Filters />
+            </div>
             <div className={styles.sidebar__links}>
               {user ? (
                 <>
