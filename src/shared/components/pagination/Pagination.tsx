@@ -18,7 +18,7 @@ function Pagination({ onChangePage, totalPages, defaultPage }: Props): React.Rea
   return (
     <ReactPaginate
       className={styles.pagination}
-      initialPage={defaultPage ? defaultPage - 1 : 0}
+      forcePage={defaultPage ? defaultPage - 1 : 0}
       pageLinkClassName={styles.pagination__button}
       activeClassName={styles.pagination__active}
       previousClassName={styles.pagination__arrows}

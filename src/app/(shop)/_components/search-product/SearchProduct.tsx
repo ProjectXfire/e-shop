@@ -1,24 +1,20 @@
 "use client";
 
 import { useRef } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 import { IoSearchOutline } from "react-icons/io5";
 import InputAnimated from "@/shared/components/animations/input-animated/InputAnimated";
+import { useQueryPathname } from "@/shared/utils/query-params/use-pathname";
 
 function SearchProduct(): React.ReactElement {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
   const timer = useRef<NodeJS.Timeout | null>(null);
+  const { handlePathname } = useQueryPathname();
 
   const handleValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value;
     if (timer.current) clearInterval(timer.current);
     timer.current = setTimeout(() => {
-      const params = new URLSearchParams(searchParams);
-      params.set("search", value);
-      params.set("page", "1");
-      router.push(`${pathname}?${params}`);
+      handlePathname({ search: value, page: 1 });
     }, 500);
   };
 

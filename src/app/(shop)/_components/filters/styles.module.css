@@ -1,0 +1,57 @@
+/* Filters */
+
+.filters {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.box-filter {
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 1px dashed var(--color-purple-6);
+}
+
+.box-filter__title {
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: var(--color-purple-4);
+}
+
+/* Filter Size */
+
+.filter-size {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.size {
+  width: 50px;
+  height: 30px;
+  box-shadow: 0px 1px 2px 1px var(--color-purple-1);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: all 300ms ease-in-out;
+}
+
+.size:active {
+  scale: 0.9;
+}
+
+.size--active {
+  color: var(--color-purple-5);
+  background-color: var(--color-purple-4);
+}
+
+/* Filter Price */
+
+.filter-price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
